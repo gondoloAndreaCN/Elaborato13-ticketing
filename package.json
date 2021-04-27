@@ -1,0 +1,26 @@
+{
+  "name": "elaborato13-ticketing",
+  "version": "1.0.0",
+  "description": "Eleborato13 - Webapp per il ticketing online di eventi",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gondoloAndreaCN/Elaborato13-ticketing.git"
+  },
+  "author": "Gondolo Andrea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gondoloAndreaCN/Elaborato13-ticketing/issues"
+  },
+  "homepage": "https://github.com/gondoloAndreaCN/Elaborato13-ticketing#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.5.0"
+  }
+}

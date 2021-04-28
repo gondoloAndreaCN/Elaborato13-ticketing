@@ -14,7 +14,6 @@ body {
 }
 
 /* navbar */
-
 .navbar {
     position: fixed;
     top: 0;
@@ -24,6 +23,7 @@ body {
     background-color: #74838f!important;
     z-index: 1;
     min-height: 126px;
+    box-shadow: 0 0 15px #4b4b4b;
 }
 
 .container-fluid {
@@ -39,7 +39,6 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 22vw;
-
 }
 
 .logo{
@@ -66,24 +65,15 @@ body {
 }
 
 /* carousel */
-
-.carousel{
-    margin-top: 150px;
-}
-
-.carousel-inner{
-    max-height: 70vh;
-}
-
 .carousel-item{
-    max-height: 70vh;
+    max-height: 90vh;
 }
 
-img{
-    height: auto;
-    width: 80vw !important;
-    margin-left: auto;
-    margin-right: auto;
+.img-car{
+    height: 95vh !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: bottom !important;
 }
 
 .carousel-control-next, .carousel-control-prev{
@@ -91,7 +81,7 @@ img{
     width: 10vw;
 }
 
-.carousel-control-next{
+/* .carousel-control-next{
     animation: bounceN 2s ease infinite;
 }
 
@@ -127,9 +117,13 @@ img{
     85%{
         transform: translateX(5%);
     }
+} */
+
+.arrow-container{
+    display: flex;
+    justify-content: center;
 }
 
-.fas::before{
-    color: #74838f !important;
+.arrow{
+    color: #74838f;
 }
-

@@ -5,7 +5,7 @@
 
 body {
 	margin-top: 0px;
-	width: 100vw;
+	width: 100%;
 	min-height: 100vh;
 	/* display: flex;
 	justify-content: space-between;
@@ -16,13 +16,42 @@ body {
 /* navbar */
 
 .navbar {
+    position: fixed;
+    top: 0;
     margin-top: 0px;
     width: 100vw;
+    overflow: hidden;
+    background-color: #74838f!important;
+    z-index: 1;
+    min-height: 126px;
 }
 
 .container-fluid {
     display: flex !important;
     justify-content: space-between !important;
+}
+
+.navbar-brand{
+    min-height: 100px;
+    min-width: 280px;
+    max-width: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 22vw;
+
+}
+
+.logo{
+    width: 150px!important;
+    max-height: 100px;
+    max-width: 100px;
+    margin: 0;
+}
+
+.separator{
+    height: 40px;
+    border: .8px solid rgb(0, 0, 0)
 }
 
 .navbar-collapse{
@@ -38,6 +67,10 @@ body {
 
 /* carousel */
 
+.carousel{
+    margin-top: 150px;
+}
+
 .carousel-inner{
     max-height: 70vh;
 }
@@ -48,13 +81,55 @@ body {
 
 img{
     height: auto;
-    width: 80vw!important;
+    width: 80vw !important;
     margin-left: auto;
     margin-right: auto;
-    object-fit: cover!important;
 }
 
 .carousel-control-next, .carousel-control-prev{
+    z-index: 0;
     width: 10vw;
-    background-color: rgba(0, 0, 0, 0.767);
 }
+
+.carousel-control-next{
+    animation: bounceN 2s ease infinite;
+}
+
+.carousel-control-prev{
+    animation: bounceP 2s ease infinite;
+}
+
+@keyframes bounceN{
+    0%, 25%, 55%, 75%, 100%{
+        transform: translateX(0);
+    }
+    45%{
+        transform: translateX(-20px);
+    }
+    65%{
+        transform: translateX(-10%);
+    }
+    85%{
+        transform: translateX(-5%);
+    }
+}
+
+@keyframes bounceP{
+    0%, 25%, 55%, 75%, 100%{
+        transform: translateX(0);
+    }
+    45%{
+        transform: translateX(20px);
+    }
+    65%{
+        transform: translateX(10%);
+    }
+    85%{
+        transform: translateX(5%);
+    }
+}
+
+.fas::before{
+    color: #74838f !important;
+}
+

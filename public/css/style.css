@@ -22,9 +22,9 @@ body {
     overflow: hidden;
     background-color: #e0e0e0 !important;
     z-index: 1;
-    /* min-height: 120px; */
     height: auto;
     box-shadow: 0 0 15px #4b4b4b;
+    border: .5px solid rgba(0, 0, 0, 0.226);
 }
 
 .container-fluid {

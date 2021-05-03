@@ -1,42 +1,61 @@
 <%- include('./partials/header') %>
 
     <body>
-
-
-        <form class="registration needs-validation" method="POST" action="/email-reg">
-            <div class="form-row">
-                <!-- <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                    placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                    else.</small> -->
-                <div class="row">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="First name" aria-label="First name"
-                            id="Fname" name="Fname" required>
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
-                            id="Lname" name="Lname" required>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col">
-                        <input type="email" class="form-control" placeholder="Enter email" aria-describedby="emailHelp"
-                            id="email" name="email" required>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <button class="btn btn-primary">Submit</button>
-                </div>
+        <div class="form" data-aos="fade-left">
+            <div class="decoration">
+                <div data-x="150" class="el" id="el"></div>
+                <div data-x="200" class="el" id="el"></div>
+                <div data-x="150" class="el" id="el"></div>
             </div>
-        </form>
+            <form class="registration needs-validation" method="POST" action="/email-reg">
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col">
+                            <p>Name:</p>
+                            <input type="text" class="form-control" placeholder="First name" aria-label="First name"
+                                id="Fname" name="Fname" required>
+                        </div>
+                        <div class="col">
+                            <p>Surname:</p>
+                            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
+                                id="Lname" name="Lname" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <p>Email:</p>
+                            <input type="email" class="form-control" placeholder="Enter email"
+                                aria-describedby="Enter email" id="email" name="email" required>
+                        </div>
+                        <div class="col">
+                            <p>Date of birth:</p>
+                            <div class="row">
+                                <input type="text" class="form-control" placeholder="gg" aria-describedby="Enter email"
+                                    id="gg" name="gg" required>
+                                <input type="text" class="form-control" placeholder="mm" aria-describedby="Enter email"
+                                    id="mm" name="mm" required>
+                                <input type="text" class="form-control" placeholder="yyyy"
+                                    aria-describedby="Enter email" id="yyyy" name="yyyy" required>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
+        <!-- <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+        <script src="js\animation\anime.js"></script> -->
 
-        <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
         <script src="js\animation\anime.js"></script>
+        <script>
+            AOS.init();
+        </script>
     </body>
 
     </html>

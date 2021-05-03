@@ -1,7 +1,11 @@
 @media screen and (max-width: 359px) {
 
+    a.nav-link{
+        width: auto !important;
+        padding: .5px;
+    }
+
     .container-fluid{
-        /* max-height: 87px; */
         min-height: 110px;
     }
 
@@ -10,15 +14,12 @@
     }
 
     .logo{
-        /* padding-right: 30px; */
         width: 70px !important;
         height: 70px !important;
     }
 
     .separator{
         height: 30px;
-        /* margin-left: 0px !important; */
-        /* margin-right: 10px !important; */
     }
     
 }
@@ -36,17 +37,17 @@
 
     .container-fluid{
         /* max-height: 87px; */
-        min-height: 110px;
+        /* min-height: 110px; */
+        height: auto;
     }
 
     .navbar-brand{
-        min-height: 100px !important;
+        min-height: 80px !important;
+        padding: 0 !important;
     }
 
     .logo{
-        /* padding-right: 30px; */
-        width: 77px;
-        /* height: 77px; */
+        width: 77px !important;
     }
 
     .separator{
@@ -56,6 +57,9 @@
 
 
    /* carousel */
+   .carousel-item{
+    max-height: 85vh;
+}
 
 
 }
@@ -67,9 +71,26 @@
        width: 130px;
    }
 
-   /* carousel */
+}
 
-    .carousel{
-        margin-top: 130px;
+@media screen and (max-width: 991px) {
+
+    .navbar-collapse{
+        min-width: 0;
+        margin-top: 1vh;
+    }
+
+    .navbar-nav{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    a.nav-link{
+        width: 15%; 
+        min-width: 88px;
+        text-align: center;
+        align-self: flex-end;
+        /* padding: 1px; */
     }
 }

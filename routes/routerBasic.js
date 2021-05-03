@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.route("/").get(controllerBasic.getHome);
 router.route("/registration").get(controllerBasic.getRegistration);
-router.route("/email").post(controllerBasic.sendEmail);
+router.route("/email-reg").post(controllerBasic.sendEmailReg);
 
 module.exports = router;

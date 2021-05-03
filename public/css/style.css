@@ -22,7 +22,8 @@ body {
     overflow: hidden;
     background-color: #74838f!important;
     z-index: 1;
-    min-height: 126px;
+    /* min-height: 120px; */
+    height: auto;
     box-shadow: 0 0 15px #4b4b4b;
 }
 
@@ -53,9 +54,15 @@ body {
     border: .8px solid rgb(0, 0, 0)
 }
 
+.title{
+    font-weight: 700;
+}
+
 .navbar-collapse{
     flex-grow: 0 !important;
     min-width: 510px;
+    text-align: right;
+
 }
 
 .navbar-nav{
@@ -64,7 +71,15 @@ body {
     justify-content: space-around;
 }
 
-/* carousel */
+a.nav-link{
+    font-weight: 700; 
+    border: 2px solid rgba(0, 0, 0, 0.300);
+    border-radius:10px;
+    padding-left: 1vw !important;
+    padding-right: 1vw !important;
+}
+
+/* index */
 .carousel-item{
     max-height: 90vh;
 }
@@ -127,3 +142,27 @@ body {
 .arrow{
     color: #74838f;
 }
+
+/* registration */
+
+.registration{
+    margin-top: 35vh;
+    height: auto;
+    width: 70vw;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #4b4b4b;
+    padding: 3vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+
+

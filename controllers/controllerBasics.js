@@ -1,13 +1,16 @@
 const nodemailer = require('nodemailer');
 
 exports.getHome = (req, res) => {
-    res.render("index", {title:"Home"});
+    res.render("index", { title: "Home" });
 }
 exports.getRegistration = (req, res) => {
-    res.render("registration", {title:"Registration"});
+    res.render("registration", { title: "Registration" });
 }
 
-exports.sendEmail = (req, res) => {
+exports.sendEmailReg = (req, res) => {
+
+    let name = req.body.Fname;
+    let surname = req.body.Lname;
 
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -16,12 +19,22 @@ exports.sendEmail = (req, res) => {
             pass: 'project2k21'
         }
     });
+
     let mailOptions = {
         from: 'scrapingproject5ainf@gmail.com',
         to: req.body["email"],
-        subject: 'Sending Email using Node.js',
-        html: 'That was easy!'
+        subject: 'Avvenuta registrazione',
+        attachDataUrls: true,
+        html: '<h1> Thanks ' + `${name}  ${surname}` + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
+            '<img style="width: 600px" src="cid:unique@kreata.ee" alt="Photo">',
+        attachments: [
+            {
+                filename: 'event1.jpg',
+                path: 'public/img/event1.jpg',
+                cid: 'unique@kreata.ee'
+            }],
     };
+
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);

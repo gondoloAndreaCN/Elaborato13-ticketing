@@ -2,6 +2,11 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const routerBasics = require("./routes/routerBasic");
+
+const dbConn = require("./db/connectionDB");
+
+dbConn.init();
+
 const app = express();
 const PORT = 8080;
 
@@ -19,6 +24,6 @@ app.use(express.static(__dirname + '/public'));
 
 app.use("/", routerBasics);
 
-app.listen(PORT , () => {
+app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 })

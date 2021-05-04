@@ -89,7 +89,11 @@ a.nav-link.login{
 a.nav-link.login:hover{
     background-color: #505050;
     border-color: #505050;
-    color: white;
+    color: white !important;
+}
+
+.login:hover{
+    /* color: white; */
 }
 
 /* index */

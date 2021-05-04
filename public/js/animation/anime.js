@@ -33,6 +33,6 @@ anime({
   borderRadius: function() { return ['50%', anime.random(10, 35) + '%']; },
   duration: function() { return anime.random(1200, 1800); },
   delay: function() { return anime.random(0, 400); },
-  direction: 'alternate',
-  loop: true
+  // direction: 'alternate',
+  // loop: true
 });

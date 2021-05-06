@@ -7,6 +7,10 @@ exports.getRegistration = (req, res) => {
     res.render("registration", { title: "Registration" });
 }
 
+exports.getConstruction = (req, res) => {
+    res.render("under-construction", { title: "OOPS!!" });
+}
+
 exports.sendEmailReg = (req, res) => {
 
     let name = req.body.Fname;
@@ -15,13 +19,13 @@ exports.sendEmailReg = (req, res) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'scrapingproject5ainf@gmail.com',
-            pass: 'project2k21'
+            user: 'ticket.radar@gmail.com',
+            pass: 'Ticket4251'
         }
     });
 
     let mailOptions = {
-        from: 'scrapingproject5ainf@gmail.com',
+        from: 'ticket.radar@gmail.com',
         to: req.body["email"],
         subject: 'Avvenuta registrazione',
         attachDataUrls: true,

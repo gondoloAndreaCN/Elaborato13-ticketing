@@ -59,9 +59,20 @@
    /* carousel */
    .carousel-item{
     max-height: 85vh;
+    }
 }
 
+@media screen and (max-width: 700px) {
 
+    .decoration{
+        display: none !important;
+    }
+
+    .form{
+        margin-right: 8% !important;
+        margin-left: 8% !important;
+        width: auto !important;
+    }
 }
 
 @media screen and (max-width: 890px) {
@@ -92,5 +103,11 @@
         text-align: center;
         align-self: flex-end;
         /* padding: 1px; */
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .form{
+        margin-right: 8% !important;
     }
 }

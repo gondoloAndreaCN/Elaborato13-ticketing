@@ -1,0 +1,89 @@
+/* registration */
+
+body{
+    min-height: auto;
+}
+
+.decoration{
+    position: absolute;
+    text-align: center;
+    z-index: -1;
+}
+
+.el{
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    margin-top: 30%;
+    margin-bottom: 30%;
+}
+
+.fas{
+    color: black !important;
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: auto;
+    margin-top: 28vh;
+    width: 70vw;
+    margin-left: auto;
+    margin-right: 15%;
+    height: auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px black;
+}
+
+.registration{
+    padding: 3vh;  
+}
+
+hr{
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+
+h4{
+    margin-bottom: 4%;
+    font-weight: 800;
+}
+
+.form-row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+p{
+    font-weight: 600;
+}
+
+.btn-primary{
+    width: 100%;
+    background-color: black;
+    border-color: black;
+}
+
+.btn-primary:hover{
+    background-color: #505050;
+    border-color: #505050;
+}
+
+#dd{
+    width: 30%;
+    margin: auto;
+}
+
+#mm{
+    width: 30%;
+    margin: auto;
+}
+
+#yyyy{
+    width: 30%;
+    margin: auto;
+}

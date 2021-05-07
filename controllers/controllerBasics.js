@@ -48,5 +48,5 @@ exports.sendEmailReg = (req, res) => {
     // });
 
     // console.log(req.body);
-    res.redirect("/registration");
+    // res.redirect("/");
 }

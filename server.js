@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const routerBasics = require("./routes/routerBasic");
 
-const dbConn = require("./db/connectionDB");
+const dbConn = require("./public/js/db/connectionDB");
 
 dbConn.init();
 

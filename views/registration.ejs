@@ -10,19 +10,19 @@
                 <div data-x="140" class="el" id="el"><i class="fas fa-glass-cheers"></i></div>
                 <div data-x="90" class="el" id="el"><i class="fas fa-ticket-alt"></i></i></div>
             </div>
-            <form class="registration needs-validation" method="POST" action="/email-reg">
+            <form class="registration needs-validation" method="POST" action="/email-reg" name="reg">
                 <h3>Registration:</h3>
                 <div class="form-row">
                     <div class="row">
                         <div class="col">
                             <p>Name:</p>
                             <input type="text" class="form-control" placeholder="First name" aria-label="First name"
-                                id="Fname" name="Fname" required>
+                                id="fName" name="fName" required>
                         </div>
                         <div class="col">
                             <p>Surname:</p>
                             <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
-                                id="Lname" name="Lname" required>
+                                id="lName" name="lName" required>
                         </div>
                     </div>
                     <hr>
@@ -59,7 +59,7 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <button class="btn btn-primary">Submit</button>
+                        <button id="validate" class="btn btn-primary" onclick="test()">Submit</button>
                     </div>
                     <div class="row">
                         <div class="form-text">
@@ -70,11 +70,9 @@
             </form>
         </div>
 
-        <!-- <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
-        <script src="js\animation\anime.js"></script> -->
-
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
         <script src="js\animation\anime.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script src="js/animation/anime.js"></script>
         <script>
             AOS.init();
         </script>

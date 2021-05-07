@@ -100,7 +100,7 @@ a.nav-link.login:hover{
 }
 
 .img-car{
-    height: 95vh !important;
+    height: 95vh;
     width: 100% !important;
     object-fit: cover !important;
     object-position: bottom !important;
@@ -152,14 +152,25 @@ a.nav-link.login:hover{
 .arrow-container{
     display: flex;
     justify-content: center;
+    height: 40px;
 }
 
 .arrow{
     color: black;
+    height: 32px;
 }
 
 a.arrow:hover{
     color: #505050;
 }
 
+/* welcome */
+div.welcome{
+    text-align: center;
+    margin-top: 25vh;
+    /* background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif); */
+    height: 60vh;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 

@@ -10,7 +10,7 @@
                 <div data-x="140" class="el" id="el"><i class="fas fa-glass-cheers"></i></div>
                 <div data-x="90" class="el" id="el"><i class="fas fa-ticket-alt"></i></i></div>
             </div>
-            <form class="registration needs-validation" method="POST" action="/email-reg" name="reg">
+            <form class="registration needs-validation" method="POST" action="/welcome" name="reg">
                 <h3>Registration:</h3>
                 <div class="form-row">
                     <div class="row">
@@ -34,14 +34,7 @@
                         </div>
                         <div class="col">
                             <p>Date of birth:</p>
-                            <div class="row">
-                                <input type="text" class="form-control" placeholder="dd" aria-describedby="Enter email"
-                                    id="dd" name="dd" required>
-                                <input type="text" class="form-control" placeholder="mm" aria-describedby="Enter email"
-                                    id="mm" name="mm" required>
-                                <input type="text" class="form-control" placeholder="yyyy"
-                                    aria-describedby="Enter email" id="yyyy" name="yyyy" required>
-                            </div>
+                            <input type="date" class="form-control" aria-describedby="Date" name="date" id="date" required>
                         </div>
                     </div>
                     <hr>
@@ -59,7 +52,7 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <button id="validate" class="btn btn-primary" onclick="test()">Submit</button>
+                        <button id="validate" class="btn btn-primary" onclick="validUsr()">Submit</button>
                     </div>
                     <div class="row">
                         <div class="form-text">

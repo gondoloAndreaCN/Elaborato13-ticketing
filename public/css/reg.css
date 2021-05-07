@@ -39,16 +39,19 @@ body{
 
 .registration{
     padding: 3vh;  
+    width: 100% !important;
 }
 
 hr{
-    margin-top: 3%;
-    margin-bottom: 3%;
+    margin-top: 5%;
+    margin-bottom: 4%;
 }
 
 h3{
     margin-bottom: 3%;
     font-weight: 800;
+    padding-left: 12px;
+    margin-bottom: 5%;
 }
 
 .form-row{
@@ -56,6 +59,19 @@ h3{
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
+    width: 100% !important;
+}
+
+.row{
+    width: 100% !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 !important;
+}
+
+.col{
+    width: 95% !important;
 }
 
 p{
@@ -66,32 +82,18 @@ p{
     width: 100%;
     background-color: black;
     border-color: black;
+    
 }
 
 .btn-primary:hover{
-    background-color: #505050;
-    border-color: #505050;
+    background-color: #505050 !important;
+    border-color: #505050 !important;
 }
 
 .btn-primary:active{
-    background-color: #505050;
-    border-color: #505050;
+    background-color: #505050 !important;
+    border-color: #505050 !important;
     box-shadow: none !important;
-}
-
-#dd{
-    width: 30%;
-    margin: auto;
-}
-
-#mm{
-    width: 30%;
-    margin: auto;
-}
-
-#yyyy{
-    width: 30%;
-    margin: auto;
 }
 
 .form-text{

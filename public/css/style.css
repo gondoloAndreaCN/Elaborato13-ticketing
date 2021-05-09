@@ -6,11 +6,11 @@
 body {
 	margin-top: 0px;
 	width: 100%;
-	min-height: 100vh;
-	/* display: flex;
+	min-height: 100vh !important;
+	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
-	overflow-x: hidden; */
+	/* overflow-x: hidden;  */
 }
 
 /* navbar */
@@ -153,6 +153,7 @@ a.nav-link.login:hover{
     display: flex;
     justify-content: center;
     height: 40px;
+    margin-bottom: 10%;
 }
 
 .arrow{
@@ -172,5 +173,16 @@ div.welcome{
     height: 60vh;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* footer */
+.mb-4{
+    margin: 0 !important;
+    /* box-shadow: 0 0 15px #4b4b4b; */
+}
+
+.copyright{
+    background-color: #e0e0e0 !important;
+    box-shadow: 0 0 15px #4b4b4b;
 }
 

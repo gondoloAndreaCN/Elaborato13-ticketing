@@ -56,7 +56,7 @@ exports.getWelcome = (req, res) => {
 
     let db = new sqlite.Database("Events.db")
           
-    db.run(`INSERT INTO User(id, fName, lName, email, birht, password) VALUES(null, ?, ?, ?, ?, ?)`, [fName, lNane, email, date, pwd], function (err) {
+    db.run(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`, [fName, lNane, email, date, pwd], function (err) {
         if (err) {
             return console.log(err.message);
         }

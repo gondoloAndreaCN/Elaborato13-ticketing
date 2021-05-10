@@ -176,13 +176,31 @@ div.welcome{
 }
 
 /* footer */
+
+footer{
+    margin-top: 3%;
+    box-shadow: 0 0 15px #4b4b4b;
+    /* max-height: 90px; */
+}
+
 .mb-4{
     margin: 0 !important;
+    max-height: 50px;
     /* box-shadow: 0 0 15px #4b4b4b; */
 }
 
 .copyright{
     background-color: #e0e0e0 !important;
-    box-shadow: 0 0 15px #4b4b4b;
+    /* box-shadow: 0 0 15px #4b4b4b; */
+    padding: 0.5rem !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.24);
 }
 
+.btn-link{
+    box-shadow: none;
+    margin: 0 !important;
+}
+
+.btn-link:active{
+    box-shadow: none;
+}

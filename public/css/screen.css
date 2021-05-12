@@ -5,9 +5,9 @@
         padding: .5px;
     }
 
-    .container-fluid{
+    /* .container-fluid{
         min-height: 110px;
-    }
+    } */
 
     .navbar-brand{
         min-width: 200px !important;
@@ -19,7 +19,7 @@
     }
 
     .separator{
-        height: 30px;
+        height: 30px !important;
     }
     
 }
@@ -61,8 +61,6 @@
     /* navbar */
 
     .container-fluid{
-        /* max-height: 87px; */
-        /* min-height: 110px; */
         height: auto;
     }
 

@@ -3,6 +3,7 @@ const nodemailer = require('nodemailer');
 exports.getHome = (req, res) => {
     res.render("index", { title: "Home" });
 }
+
 exports.getRegistration = (req, res) => {
     res.render("registration", { title: "Registration" });
 }

@@ -2,12 +2,15 @@ const nodemailer = require('nodemailer');
 const sqlite = require("sqlite3");
 let {PythonShell} = require('python-shell')
 
+let finish = 1
+
 exports.getHome = (req, res) => {
     res.render("index", { title: "Home" });
 
     PythonShell.run('./scraping-event.py', null, function (err) {
         if (err) throw err;
         console.log('scraping ended');
+        finish = 0;
       });
 }
 

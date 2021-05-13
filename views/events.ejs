@@ -1,2 +1,28 @@
 <%- include('./partials/header') %>
-<%- include('./partials/footer') %>
+
+    <link rel="stylesheet" href="css/events.css">
+
+    <body>
+
+
+        <div class="container container-card">
+
+            <div class="row">
+                <% let i=0; events.forEach(function(event, index){ %>
+                    <% i+=1; %>
+                        <div class="col">
+                            <div class="card">
+                                <img src="/img/event1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= event['name'] %> </h5>
+                                    <p class="card-text"><%= event['location'] %> </p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+            </div>
+
+        </div>
+    </body>
+    <%- include('./partials/footer') %>

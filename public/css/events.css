@@ -1,0 +1,10 @@
+.container-card{
+    margin-top: 25vh;
+}
+
+.card{
+    margin: 0 auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 18rem;
+}

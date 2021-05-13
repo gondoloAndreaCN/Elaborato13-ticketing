@@ -24,17 +24,15 @@ for x in range(1,2):
 		for link in item.find_all('a', href=True):		
 			if (jolly == ""):
 				productlinks.append(link['href'])
-				# print(link['href'], ",", jolly)
 				jolly = link['href']
 			if (jolly != link['href']):
-				# print(link['href'], ",", jolly)
 				productlinks.append(link['href'])
 				jolly = link['href']
 
 i = 0
 
 head = '[\n'
-end = ']'
+end = '\n]'
 
 jsonFile.write(head)
 
@@ -45,8 +43,7 @@ for link in productlinks:
     	counter += 1
 
 for link in productlinks:
-	# print(counter)
-	# print(i)
+
 	
 
 	if(link[:29] == 'https://shop.ticketmaster.it/'):
@@ -71,14 +68,14 @@ for link in productlinks:
 		# 	}
   		# }
 
-		events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + '\n\t} \n'
+		events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + '\n\t}'
 		
 		jsonFile.write(events)
 
 	if(i != counter-1 and link[:29] == 'https://shop.ticketmaster.it/'):
 		
 		i += 1
-		events = ','
+		events = ',\n'
 		jsonFile.write(events)
 
     			

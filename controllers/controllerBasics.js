@@ -1,8 +1,26 @@
 const nodemailer = require('nodemailer');
 const sqlite = require("sqlite3");
+const spawn = require("child_process").spawn;
 
 exports.getHome = (req, res) => {
     res.render("index", { title: "Home" });
+
+    var dataToSend;
+    // spawn new child process to call the python script
+    const python = spawn('python', ['../test.py']);
+    // collect data from script
+    python.stdout.on('data', data => {
+        console.log('Pipe data from python script ...');
+        dataToSend = data.toString();
+        // res.render("index", { title: "Home" });
+
+    });
+    // in close event we are sure that stream from child process is closed
+    python.on('close', (code) => {
+        console.log(`child process close all stdio with code ${code}`);
+        // send data to browser
+        
+    });
 }
 
 exports.getRegistration = (req, res) => {
@@ -56,7 +74,7 @@ exports.getWelcome = (req, res) => {
 
 
     let db = new sqlite.Database("Events.db")
-          
+
     db.run(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`, [fName, lNane, email, date, pwd], function (err) {
         if (err) {
             return console.log(err.message);

@@ -44,7 +44,7 @@ exports.getWelcome = (req, res) => {
         subject: 'Avvenuta registrazione',
         attachDataUrls: true,
         html: '<h1> Thanks ' + `${fName}  ${lNane}` + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
-            '<img style="width: 70vw" src="cid:unique@kreata.ee" alt="Photo">',
+            '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
         attachments: [
             {
                 filename: 'event1.jpg',

@@ -3,252 +3,84 @@
 	"id":"0",
 	 "name":"Brit Floyd - World Tour 2021", 
 	 "location":"ven 22 ott 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"1",
 	 "name":"Brit Floyd - World Tour 2021", 
 	 "location":"ven 22 ott 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"2",
 	 "name":"Brit Floyd - World Tour 2021", 
 	 "location":"sab 23 ott 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"3",
 	 "name":"Brit Floyd - World Tour 2021", 
 	 "location":"sab 23 ott 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"4",
 	 "name":"Brit Floyd - World Tour 2021", 
 	 "location":"dom 24 ott 2021 - h 21:00 | Teatro Repower, Assago", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"5",
 	 "name":"Brit Floyd - World Tour 2021", 
 	 "location":"dom 24 ott 2021 - h 21:00 | Teatro Repower, Assago", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"6",
 	 "name":"Brit Floyd - World Tour 2021", 
 	 "location":"mer 27 ott 2021 - h 21:00 | Nuovo Teatro Verdi, Montecatini Terme", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"7",
 	 "name":"Brit Floyd - World Tour 2021", 
 	 "location":"mer 27 ott 2021 - h 21:00 | Nuovo Teatro Verdi, Montecatini Terme", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"8",
 	 "name":"Pink Sonic", 
 	 "location":"gio 09 dic 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"9",
 	 "name":"Pink Sonic", 
 	 "location":"gio 09 dic 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"10",
 	 "name":"Pink Sonic", 
 	 "location":"sab 11 dic 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"11",
 	 "name":"Pink Sonic", 
 	 "location":"sab 11 dic 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"12",
 	 "name":"ROCK OPERA - I più Grandi Successi Rock arrangiati per Orchestra e Coro", 
 	 "location":"mer 02 feb 2022 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ,	{
 	"id":"13",
 	 "name":"ROCK OPERA - I più Grandi Successi Rock arrangiati per Orchestra e Coro", 
 	 "location":"mer 02 feb 2022 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"14",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"ven 22 ott 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"15",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"ven 22 ott 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"16",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"sab 23 ott 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"17",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"sab 23 ott 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"18",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"dom 24 ott 2021 - h 21:00 | Teatro Repower, Assago", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"19",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"dom 24 ott 2021 - h 21:00 | Teatro Repower, Assago", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"20",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"mer 27 ott 2021 - h 21:00 | Nuovo Teatro Verdi, Montecatini Terme", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"21",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"mer 27 ott 2021 - h 21:00 | Nuovo Teatro Verdi, Montecatini Terme", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"22",
-	 "name":"Pink Sonic", 
-	 "location":"gio 09 dic 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"23",
-	 "name":"Pink Sonic", 
-	 "location":"gio 09 dic 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"24",
-	 "name":"Pink Sonic", 
-	 "location":"sab 11 dic 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"25",
-	 "name":"Pink Sonic", 
-	 "location":"sab 11 dic 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"26",
-	 "name":"ROCK OPERA - I più Grandi Successi Rock arrangiati per Orchestra e Coro", 
-	 "location":"mer 02 feb 2022 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"27",
-	 "name":"ROCK OPERA - I più Grandi Successi Rock arrangiati per Orchestra e Coro", 
-	 "location":"mer 02 feb 2022 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"28",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"ven 22 ott 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"29",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"ven 22 ott 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"30",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"sab 23 ott 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"31",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"sab 23 ott 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"32",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"dom 24 ott 2021 - h 21:00 | Teatro Repower, Assago", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"33",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"dom 24 ott 2021 - h 21:00 | Teatro Repower, Assago", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"34",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"mer 27 ott 2021 - h 21:00 | Nuovo Teatro Verdi, Montecatini Terme", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"35",
-	 "name":"Brit Floyd - World Tour 2021", 
-	 "location":"mer 27 ott 2021 - h 21:00 | Nuovo Teatro Verdi, Montecatini Terme", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"36",
-	 "name":"Pink Sonic", 
-	 "location":"gio 09 dic 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"37",
-	 "name":"Pink Sonic", 
-	 "location":"gio 09 dic 2021 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"38",
-	 "name":"Pink Sonic", 
-	 "location":"sab 11 dic 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"39",
-	 "name":"Pink Sonic", 
-	 "location":"sab 11 dic 2021 - h 21:30 | Gran Teatro Morato, Brescia", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"40",
-	 "name":"ROCK OPERA - I più Grandi Successi Rock arrangiati per Orchestra e Coro", 
-	 "location":"mer 02 feb 2022 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
-	} 
-,	{
-	"id":"41",
-	 "name":"ROCK OPERA - I più Grandi Successi Rock arrangiati per Orchestra e Coro", 
-	 "location":"mer 02 feb 2022 - h 21:30 | Gran Teatro GEOX, Padova", 
-	 "status":"Info"
+	 "status":"Disponibile"
 	} 
 ]

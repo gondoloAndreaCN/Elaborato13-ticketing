@@ -7,7 +7,7 @@ exports.getHome = (req, res) => {
 
     PythonShell.run('./scraping-event.py', null, function (err) {
         if (err) throw err;
-        console.log('finished scraping');
+        console.log('scraping ended');
       });
 }
 

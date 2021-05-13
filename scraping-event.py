@@ -21,7 +21,8 @@ for x in range(1,2):
 	jolly = 0
 	for item in productlist:
 		for link in item.find_all('a', href=True):
-			if (jolly = 0)
+			if (jolly = 0):
+				
 			productlinks.append(link['href'])
 
 i = 0

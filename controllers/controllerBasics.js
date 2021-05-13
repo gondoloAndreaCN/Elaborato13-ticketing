@@ -10,7 +10,6 @@ exports.getHome = (req, res) => {
     PythonShell.run('./scraping-event.py', null, function (err) {
         if (err) throw err;
         console.log('scraping ended');
-        finish = 0;
     });
 }
 
@@ -86,5 +85,10 @@ exports.getWelcome = (req, res) => {
 
 exports.getEvents = (req, res) => {
     const events = require("../events.json");
-    res.render("events", { title: "Events", events });
+    PythonShell.run('./scraping-event.py', null, function (err) {
+        if (err) throw err;
+        console.log('scraping ended');
+        res.render("events", { title: "Events", events });
+    });
+    
 }

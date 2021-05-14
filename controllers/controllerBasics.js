@@ -1,5 +1,8 @@
 const nodemailer = require('nodemailer');
-const sqlite = require("sqlite3");
+// const sqlite = require("sqlite3");
+// 
+const sqlite = require('better-sqlite3')('Events.db');
+// 
 let { PythonShell } = require('python-shell')
 
 let finish = 1
@@ -30,7 +33,7 @@ exports.getWelcome = (req, res) => {
     let pwd = req.body.pwd;
     let pwd1 = req.body.pwd1;
 
-    let db = new sqlite.Database("Events.db")
+    // let db = new sqlite.Database("Events.db")
 
         db.run(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`, [fName, lNane, email, date, pwd], function (err) {
             if (err) {

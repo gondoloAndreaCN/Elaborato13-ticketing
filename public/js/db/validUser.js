@@ -1,3 +1,7 @@
+// window.addEventListener('load', () => {
+//     alert("kk")
+// });
+
 function validUsr() {
     let fName = document.regForm.fName.value;
     let lName = document.regForm.lName.value;

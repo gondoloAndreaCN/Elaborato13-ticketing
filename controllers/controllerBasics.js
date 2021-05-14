@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 // const sqlite = require("sqlite3");
 // 
-const sqlite = require('better-sqlite3')('Events.db');
+const db = require('better-sqlite3')('Events.db');
 // 
 let { PythonShell } = require('python-shell')
 
@@ -17,7 +17,7 @@ exports.getHome = (req, res) => {
 }
 
 exports.getRegistration = (req, res) => {
-    res.render("registration", { title: "Registration" });
+    res.render("registration", { title: "Registration", exist: "" });
 }
 
 exports.getConstruction = (req, res) => {
@@ -33,75 +33,64 @@ exports.getWelcome = (req, res) => {
     let pwd = req.body.pwd;
     let pwd1 = req.body.pwd1;
 
-    // let db = new sqlite.Database("Events.db")
+    const row = db.prepare(`SELECT * FROM User`).get();
+    console.log(row)
 
-    db.all(`SELECT * FROM Users WEHERE email = ?`, [email],  function (err, rows) {
-        console.log(email)
-        console.log(rows)
-        rows.forEach( row => console.log(`${row.email} is correct`))
-        // if (rows == email) {
-        //     console.log("presente");
-        // }else{
-        //     console.log("non presente")
-        // }
-        callback(rows);
-    })
-    
-    function callback(rows) {
-        console.log("R:" + rows);
-    }
+    if (row == undefined) {
+        console.log("new user")
+        const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
+        const info = stmt.run(fName, lNane, email, date, pwd)
 
+        console.log(info.lastInsertRowid);
 
-    db.run(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`, [fName, lNane, email, date, pwd], function (err) {
-        if (err) {
-            return console.log(err.message);
+        if (pwd != pwd1) {
+            res.render("registration", { title: "Registration", exist: "" });
+        } else if (pwd == pwd1) {
+            res.render("welcome", { title: "Welcome" });
+            let transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'ticket.radar@gmail.com',
+                    pass: 'Ticket4251'
+                }
+            });
+
+            let mailOptions = {
+                from: 'ticket.radar@gmail.com',
+                to: req.body["email"],
+                subject: 'Avvenuta registrazione',
+                attachDataUrls: true,
+                html: '<h1> Thanks ' + `${fName}  ${lNane}` + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
+                    '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
+                attachments: [
+                    {
+                        filename: 'event1.jpg',
+                        path: 'public/img/event1.jpg',
+                        cid: 'unique@kreata.ee'
+                    }],
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+
+            console.log(req.body);
+
         }
-        console.log(`A row has been inserted with row, id ${this.lastID}`);
-    });
-
-    db.close();
-
-    if (pwd != pwd1) {
-        res.render("registration", { title: "Registration" });
-    } else if (pwd == pwd1) {
-        res.render("welcome", { title: "Welcome" });
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'ticket.radar@gmail.com',
-                pass: 'Ticket4251'
-            }
-        });
-
-        let mailOptions = {
-            from: 'ticket.radar@gmail.com',
-            to: req.body["email"],
-            subject: 'Avvenuta registrazione',
-            attachDataUrls: true,
-            html: '<h1> Thanks ' + `${fName}  ${lNane}` + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
-                '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
-            attachments: [
-                {
-                    filename: 'event1.jpg',
-                    path: 'public/img/event1.jpg',
-                    cid: 'unique@kreata.ee'
-                }],
-        };
-
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-            }
-        });
-
-        console.log(req.body);
+    } else {
+        if (row.email == email) {
+            console.log("email already exist");
+            res.render("registration", { title: "Registration", exist: "User already exist, Log in" });
+        }
 
     }
-
 
 }
+
 
 exports.getEvents = (req, res) => {
     const events = require("../events.json");

@@ -47,6 +47,11 @@ hr{
     margin-bottom: 2%;
 }
 
+.exist{
+    padding-left: 12px;
+    color: red;
+}
+
 h3{
     margin-bottom: 3%;
     font-weight: 700;

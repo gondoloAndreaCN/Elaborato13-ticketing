@@ -30,6 +30,17 @@ exports.getWelcome = (req, res) => {
     let pwd = req.body.pwd;
     let pwd1 = req.body.pwd1;
 
+    let db = new sqlite.Database("Events.db")
+
+        db.run(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`, [fName, lNane, email, date, pwd], function (err) {
+            if (err) {
+                return console.log(err.message);
+            }
+            console.log(`A row has been inserted with row, id ${this.lastID}`);
+        });
+
+        db.close();
+
     if (pwd != pwd1) {
         res.render("registration", { title: "Registration" });
     } else if(pwd == pwd1){
@@ -67,17 +78,6 @@ exports.getWelcome = (req, res) => {
 
         console.log(req.body);
 
-
-        let db = new sqlite.Database("Events.db")
-
-        db.run(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`, [fName, lNane, email, date, pwd], function (err) {
-            if (err) {
-                return console.log(err.message);
-            }
-            console.log(`A row has been inserted with rowid ${this.lastID}`);
-        });
-
-        db.close();
     }
 
 
@@ -88,7 +88,7 @@ exports.getEvents = (req, res) => {
     PythonShell.run('./scraping-event.py', null, function (err) {
         if (err) throw err;
         console.log('scraping ended');
-        res.render("events", { title: "Events", events });
     });
+    res.render("events", { title: "Events", events });
     
 }

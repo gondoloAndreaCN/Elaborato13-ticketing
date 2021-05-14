@@ -11,7 +11,7 @@ function validUsr() {
         alert("La password non corrisponde");
         document.regForm.pwd1 = "";
         document.regForm.pwd1.focus();
-        return false;
+        // return false;
     }else if( pwd == pwd1){
         console.log("ok")
         window.location.href = "/welcome";

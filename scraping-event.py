@@ -36,6 +36,10 @@ end = '\n]'
 
 jsonFile.write(head)
 
+chars = {
+	"&nbsp;", " "
+}
+
 counter = 0
 
 for link in productlinks:
@@ -48,13 +52,16 @@ for link in productlinks:
 
 	if(link[:29] == 'https://shop.ticketmaster.it/'):
 		r = requests.get(link, headers = headers)
-		soup = BeautifulSoup(r.content, 'lxml')
+		content = str(r.content)
+		content = content.replace('&nbsp;', '')
+		content = content.replace('\xc2\xa0', '')
+		soup = BeautifulSoup(content, 'lxml')
+
+		# soup = soup.replace("&nbsp;", "")
 
 		name = soup.find('h1', class_='text_h3 bold').text.strip()
 		location = soup.find('h2', class_='text_p margin-bottom').text.strip()
 		status = soup.find('span', class_='badge dGreen').text.strip()
-
-		# print(name, location, status)
 
 		id = i
 		

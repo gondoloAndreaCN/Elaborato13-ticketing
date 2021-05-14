@@ -60,9 +60,11 @@ for link in productlinks:
 
 		name = soup.find('h1', class_='text_h3 bold').text.strip()
 		location = soup.find('h2', class_='text_p margin-bottom').text.strip()
-		location = location.replace("xc2", " ")
-		location = location.replace("xa0", " ")
-		location = location.replace("\'", " ")
+		location = location.replace("xc2", "")
+		location = location.replace("xa0", "")
+		location = location.replace("xc3", "")
+		location = location.replace("xb9", "")
+		# location = location.replace("\'", " ")
 		status = soup.find('span', class_='badge dGreen').text.strip()
 
 		id = i

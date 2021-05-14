@@ -54,13 +54,15 @@ for link in productlinks:
 		r = requests.get(link, headers = headers)
 		content = str(r.content)
 		content = content.replace('&nbsp;', '')
-		content = content.replace('\xc2\xa0', '')
 		soup = BeautifulSoup(content, 'lxml')
 
 		# soup = soup.replace("&nbsp;", "")
 
 		name = soup.find('h1', class_='text_h3 bold').text.strip()
 		location = soup.find('h2', class_='text_p margin-bottom').text.strip()
+		location = location.replace("xc2", " ")
+		location = location.replace("xa0", " ")
+		location = location.replace("\'", " ")
 		status = soup.find('span', class_='badge dGreen').text.strip()
 
 		id = i

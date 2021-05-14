@@ -60,12 +60,14 @@ for link in productlinks:
 
 		name = soup.find('h1', class_='text_h3 bold').text.strip()
 		location = soup.find('h2', class_='text_p margin-bottom').text.strip()
+		status = soup.find('span', class_='badge dGreen').text.strip()
+		
 		location = location.replace("xc2", "")
 		location = location.replace("xa0", "")
-		name = location.replace("xc3", "ù")
-		name = location.replace("xb9", "")
-		location.replace("\\", " ")
-		status = soup.find('span', class_='badge dGreen').text.strip()
+		location = location.replace("\'", '"')
+		name = name.replace("xc3", "")
+		name = name.replace("xb9", "")
+		name = name.replace("\'", '"')
 
 		id = i
 		
@@ -78,6 +80,7 @@ for link in productlinks:
     	# 		"car3":"Fiat"
 		# 	}
   		# }
+		print(name)
 
 		events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + '\n\t}'
 		

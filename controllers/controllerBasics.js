@@ -91,9 +91,7 @@ exports.getEvents = (req, res) => {
     let finish = 0;
     PythonShell.run('./scraping-event.py', null, function (err) {
         if (err) throw err;
-        console.log(finish);
         console.log('scraping ended');
-        console.log(finish);
         finish = 1;
         if (finish == 1){
             const events = require("../events.json");

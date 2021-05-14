@@ -9,11 +9,6 @@ let finish = 1
 
 exports.getHome = (req, res) => {
     res.render("index", { title: "Home" });
-
-    PythonShell.run('./scraping-event.py', null, function (err) {
-        if (err) throw err;
-        console.log('scraping ended');
-    });
 }
 
 exports.getRegistration = (req, res) => {
@@ -93,11 +88,19 @@ exports.getWelcome = (req, res) => {
 
 
 exports.getEvents = (req, res) => {
-    const events = require("../events.json");
+    let finish = 0;
     PythonShell.run('./scraping-event.py', null, function (err) {
         if (err) throw err;
+        console.log(finish);
         console.log('scraping ended');
+        console.log(finish);
+        finish = 1;
+        if (finish == 1){
+            const events = require("../events.json");
+            res.render("events", { title: "Events", events });
+        }
     });
-    res.render("events", { title: "Events", events });
+    
+
 
 }

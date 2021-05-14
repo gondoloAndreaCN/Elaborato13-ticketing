@@ -35,18 +35,35 @@ exports.getWelcome = (req, res) => {
 
     // let db = new sqlite.Database("Events.db")
 
-        db.run(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`, [fName, lNane, email, date, pwd], function (err) {
-            if (err) {
-                return console.log(err.message);
-            }
-            console.log(`A row has been inserted with row, id ${this.lastID}`);
-        });
+    db.all(`SELECT * FROM Users WEHERE email = ?`, [email],  function (err, rows) {
+        console.log(email)
+        console.log(rows)
+        rows.forEach( row => console.log(`${row.email} is correct`))
+        // if (rows == email) {
+        //     console.log("presente");
+        // }else{
+        //     console.log("non presente")
+        // }
+        callback(rows);
+    })
+    
+    function callback(rows) {
+        console.log("R:" + rows);
+    }
 
-        db.close();
+
+    db.run(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`, [fName, lNane, email, date, pwd], function (err) {
+        if (err) {
+            return console.log(err.message);
+        }
+        console.log(`A row has been inserted with row, id ${this.lastID}`);
+    });
+
+    db.close();
 
     if (pwd != pwd1) {
         res.render("registration", { title: "Registration" });
-    } else if(pwd == pwd1){
+    } else if (pwd == pwd1) {
         res.render("welcome", { title: "Welcome" });
         let transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -93,5 +110,5 @@ exports.getEvents = (req, res) => {
         console.log('scraping ended');
     });
     res.render("events", { title: "Events", events });
-    
+
 }

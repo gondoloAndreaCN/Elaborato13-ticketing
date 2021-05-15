@@ -18,8 +18,6 @@ anime({
 
 // Registrazione
 
-
-
 if ($(window).width() > 700) {
   anime({
     targets: '.decoration .el',
@@ -39,11 +37,4 @@ if ($(window).width() > 700) {
     // direction: 'alternate',
     // loop: true
   });
-} else {
-  // alert("alert")
 }
-
-// function loader(){
-//     const loader = document.querySelector(".loader")
-//     loader.className += " hidden"
-// }

@@ -110,6 +110,14 @@
         height: 70vh !important;
     }
 
+    .arrow-container{
+        margin-bottom: 20vh;
+    }
+
+    /* .description{
+        padding: 3%;
+    } */
+
    /* under-cons */
    div.error{
     background-size: 100%;

@@ -20,9 +20,16 @@
 .btn-primary:hover{
     background-color: black !important;
     border-color: black !important;
+    box-shadow: none !important;
 }
 
 .btn-primary:active{
+    background-color: #505050 !important;
+    border-color: #505050 !important;
+    box-shadow: none !important;
+}
+
+.btn-primary:visited{
     background-color: #505050 !important;
     border-color: #505050 !important;
     box-shadow: none !important;

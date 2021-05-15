@@ -176,6 +176,38 @@ div.welcome{
     background-repeat: no-repeat;
 }
 
+/* loader */
+
+.loader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    /* top: 25vh; */
+    left: 0;
+    z-index: 4;
+    background-color: white;
+}
+
+.img-loader{
+    max-width: 480px;
+    width: 50%;
+}
+
+.loader.hidden{
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut{
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 /* footer */
 
 footer{

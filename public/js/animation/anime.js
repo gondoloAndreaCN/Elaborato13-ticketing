@@ -42,3 +42,8 @@ if ($(window).width() > 700) {
 } else {
   // alert("alert")
 }
+
+// function loader(){
+//     const loader = document.querySelector(".loader")
+//     loader.className += " hidden"
+// }

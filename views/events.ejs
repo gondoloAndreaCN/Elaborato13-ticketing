@@ -4,25 +4,52 @@
 
     <body>
 
+        <div class="loader hidden">
+            <img class="img-loader" src="https://i.giphy.com/media/l3nWhI38IWDofyDrW/giphy.webp" alt="" >
+        </div>
+
 
         <div class="container container-card">
 
             <div class="row">
-                <% let i=0; events.forEach(function(event, index){ %>
-                    <% i+=1; %>
-                        <div class="col">
-                            <div class="card">
-                                <img src="/img/event1.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title"><%= event['name'] %> </h5>
-                                    <p class="card-text"><%= event['location'] %> </p>
+                <% events.forEach(function(event, index){ %>
+                    <div class="col">
+                        <div class="card text-center">
+                            <img src="/img/event1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= event['name'] %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= event['location'] %>
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <!-- <li class="list-group-item">
+                                    </li>
+                                    <li class="list-group-item">
+                                        
+                                    </li>
+                                    <li class="list-group-item">
+                                    </li> -->
                                     <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                                </ul>
+                                <div class="card-footer text-muted">
+                                    <p class="card-subtitle mb-2">
+                                        status: <%= event['status'] %>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <% }) %>
+                    </div>
+                    <% }) %>
             </div>
-
         </div>
+
+        <script>
+            
+        </script>
+        <script src="js\animation\loader.js"></script>
+
     </body>
     <%- include('./partials/footer') %>

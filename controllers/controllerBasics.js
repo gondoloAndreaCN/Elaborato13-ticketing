@@ -1,8 +1,7 @@
 const nodemailer = require('nodemailer');
-// const sqlite = require("sqlite3");
-// 
 const db = require('better-sqlite3')('Events.db');
-// 
+const bcrypt = require('bcrypt');
+
 let { PythonShell } = require('python-shell')
 
 let finish = 1
@@ -33,9 +32,9 @@ exports.getWelcome = (req, res) => {
 
     if (row == undefined) {
         console.log("new user")
+        let crypted = bcrypt.hashSync(pwd, 10);
         const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
-        const info = stmt.run(fName, lNane, email, date, pwd)
-
+        const info = stmt.run(fName, lNane, email, date, crypted)
         console.log(info.lastInsertRowid);
 
         if (pwd != pwd1) {
@@ -99,6 +98,4 @@ exports.getEvents = (req, res) => {
         }
     });
     
-
-
 }

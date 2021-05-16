@@ -181,11 +181,16 @@ p{
 a{
     color:#505050;
     font-weight: 500;
+    box-shadow: none !important;
 }
 
 a:hover{
     color:#505050;
     font-weight: 500;
+}
+
+.exclamation{
+    color: red;
 }
 
 /* welcome */

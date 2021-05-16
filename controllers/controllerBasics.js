@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer');
 const db = require('better-sqlite3')('Events.db');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
+const { encrypt, decrypt } = require('../public/js/db/crypto');
+
 
 let { PythonShell } = require('python-shell')
 
@@ -27,12 +29,15 @@ exports.getWelcome = (req, res) => {
     let pwd = req.body.pwd;
     let pwd1 = req.body.pwd1;
 
-    const row = db.prepare(`SELECT * FROM User`).get();
-    console.log(row.email)
+    const row = db.prepare(`SELECT * FROM User WHERE email = ?`).get(email);
+    console.log(row)
 
     if (row == undefined) {
         console.log("new user")
-        let crypted = bcrypt.hashSync(pwd, 10);
+        let crypted = encrypt(pwd);
+        console.log(crypted.iv);
+        crypted = "iv: " + crypted.iv + ", content: " + crypted.content; 
+        console.log(crypted);
         const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
         const info = stmt.run(fName, lNane, email, date, crypted)
         console.log(info.lastInsertRowid);
@@ -54,7 +59,7 @@ exports.getWelcome = (req, res) => {
                 to: req.body["email"],
                 subject: 'Avvenuta registrazione',
                 attachDataUrls: true,
-                html: '<h1> Thanks ' + `${fName}  ${lNane}` + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
+                html: '<h1> Thanks ' + `${fName} ${lNane}` + '!' +  '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
                     '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {
@@ -77,10 +82,14 @@ exports.getWelcome = (req, res) => {
         }
     } else if (row.email == email) {
         console.log("email already exist");
+        console.log(email);
+        console.log(row.email);
         res.render("registration", { title: "Registration", exist: "User already exist, Log in" });
     } else if (row.email != email) {
+        console.log(row.email);
         console.log("new user")
-        let crypted = bcrypt.hashSync(pwd, 10);
+        let crypted = encrypt(pwd);
+        crypted = "iv: " + crypted.iv + ", content: " + crypted.content; 
         const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
         const info = stmt.run(fName, lNane, email, date, crypted)
         console.log(info.lastInsertRowid);

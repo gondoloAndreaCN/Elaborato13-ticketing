@@ -10,7 +10,7 @@
                 <% events.forEach(function(event, index){ %>
                     <div class="col">
                         <div class="card text-center">
-                            <img src="/img/event4.jpg" class="card-img-top" alt="...">
+                            <img src="/img/event4.jpg" class="card-img-top" alt="img event">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <%= event['name'] %>
@@ -19,14 +19,13 @@
                                     <%= event['location'] %>
                                 </p>
                                 <ul class="list-group list-group-flush">
-                                    <!-- <li class="list-group-item">
-                                    </li>
-                                    <li class="list-group-item">
-                                        
-                                    </li>
-                                    <li class="list-group-item">
-                                    </li> -->
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                                    <form action="/event" method="post">
+                                        <input type="text" value="<%= event['name'] %>" name="name" style="display: none;">
+                                        <input type="text" value="<%= event['location'] %>" name="location" style="display: none;">
+                                        <input type="text" value="<%= event['status'] %>" name="status" style="display: none;">
+                                        <button class="btn btn-primary">Go to event</a>
+                                    </form>
 
                                 </ul>
                                 <div class="card-footer text-muted">

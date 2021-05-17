@@ -181,3 +181,10 @@ exports.getEvents = (req, res) => {
         }
     });
 }
+
+exports.getEvent =  (req, res) => {
+    let name = req.body.name;
+    let location = req.body.location;
+    let status = req.body.status;
+    res.render("event", {title: name, name: name, location: location, status: status});
+}

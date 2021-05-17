@@ -1,0 +1,47 @@
+.container-event{
+    margin-top: 30vh;
+}
+
+img.image{
+    min-width: 154px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+h5{
+    padding: .7rem;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius:10px;
+    margin: 0;
+    text-align: center;
+}
+
+.btn-primary {
+    padding: .7rem;
+    width: 100%;
+    background-color: #505050;
+    border-color: #505050;
+}
+
+.btn-primary:hover{
+    background-color: black !important;
+    border-color: black !important;
+    box-shadow: none !important;
+}
+
+.btn-primary:active{
+    background-color: #505050 !important;
+    border-color: #505050 !important;
+    box-shadow: none !important;
+}
+
+.btn-primary:visited{
+    background-color: #505050 !important;
+    border-color: #505050 !important;
+    box-shadow: none !important;
+}

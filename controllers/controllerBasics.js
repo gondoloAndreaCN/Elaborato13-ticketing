@@ -6,8 +6,6 @@ const { encrypt, decrypt } = require('../public/js/db/crypto');
 
 let { PythonShell } = require('python-shell')
 
-let finish = 1
-
 exports.getHome = (req, res) => {
     res.render("index", { title: "Home" });
 }
@@ -38,6 +36,7 @@ exports.getWelcome = (req, res) => {
         console.log(crypted.iv);
         crypted = "iv: " + crypted.iv + ", content: " + crypted.content; 
         console.log(crypted);
+
         const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
         const info = stmt.run(fName, lNane, email, date, crypted)
         console.log(info.lastInsertRowid);
@@ -59,7 +58,7 @@ exports.getWelcome = (req, res) => {
                 to: req.body["email"],
                 subject: 'Avvenuta registrazione',
                 attachDataUrls: true,
-                html: '<h1> Thanks ' + `${fName} ${lNane}` + '!' +  '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
+                html: '<h1> Thanks ' + `${fName} ${lNane}` + '! ' +  '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
                     '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {
@@ -111,7 +110,7 @@ exports.getWelcome = (req, res) => {
                 to: req.body["email"],
                 subject: 'Avvenuta registrazione',
                 attachDataUrls: true,
-                html: '<h1> Thanks ' + `${fName}  ${lNane}` + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
+                html: '<h1> Thanks ' + `${fName}  ${lNane}` + '! ' +  '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
                     '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {

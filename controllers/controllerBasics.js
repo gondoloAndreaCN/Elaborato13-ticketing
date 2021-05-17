@@ -25,6 +25,7 @@ exports.getConstruction = (req, res) => {
 exports.getWelcomeBack = (req, res) => {
     let email = req.body.logEmail;
     let pwd = req.body.logPwd;
+    console.log(pwd)
 
     console.log(email)
     const row = db.prepare(`SELECT * FROM User WHERE email = ?`).get(email);
@@ -35,6 +36,7 @@ exports.getWelcomeBack = (req, res) => {
 
     let decrypted = decrypt(pwddb);
     console.log(decrypted);
+
 
     if(row == undefined){
         console.log("no user found")

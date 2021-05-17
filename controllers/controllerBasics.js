@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer');
 const db = require('better-sqlite3')('Events.db');
-// const bcrypt = require('bcrypt');
 const { encrypt, decrypt } = require('../public/js/db/crypto');
 
 
@@ -45,11 +44,9 @@ exports.getWelcomeBack = (req, res) => {
         console.log("user found");
         res.render("welcomeBack", {title:"Welcome back"})
     }
-
 }
 
 exports.getWelcome = (req, res) => {
-
     let fName = req.body.fName;
     let lNane = req.body.lName;
     let email = req.body.email;
@@ -64,8 +61,6 @@ exports.getWelcome = (req, res) => {
         console.log("new user")
         let crypted = encrypt(pwd);
         console.log(crypted);
-        // crypted = "iv: " + crypted.iv + ", content: " + crypted.content; 
-        // console.log(crypted);
         let decrypted = decrypt(crypted);
         console.log(decrypted);
         const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
@@ -120,8 +115,6 @@ exports.getWelcome = (req, res) => {
         console.log("new user")
         let crypted = encrypt(pwd);
         console.log(crypted);
-        // crypted = "iv: " + crypted.iv + ", content: " + crypted.content; 
-        // console.log(crypted);
         let decrypted = decrypt(crypted);
         console.log(decrypted);
         const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
@@ -165,7 +158,6 @@ exports.getWelcome = (req, res) => {
             console.log(req.body);
         }
     }
-
 }
 
 

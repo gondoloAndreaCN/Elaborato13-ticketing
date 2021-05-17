@@ -33,10 +33,11 @@ exports.getWelcome = (req, res) => {
     if (row == undefined) {
         console.log("new user")
         let crypted = encrypt(pwd);
-        console.log(crypted.iv);
-        crypted = "iv: " + crypted.iv + ", content: " + crypted.content; 
         console.log(crypted);
-
+        // crypted = "iv: " + crypted.iv + ", content: " + crypted.content; 
+        // console.log(crypted);
+        let decrypted = decrypt(crypted);
+        console.log(decrypted);
         const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
         const info = stmt.run(fName, lNane, email, date, crypted)
         console.log(info.lastInsertRowid);
@@ -88,7 +89,11 @@ exports.getWelcome = (req, res) => {
         console.log(row.email);
         console.log("new user")
         let crypted = encrypt(pwd);
-        crypted = "iv: " + crypted.iv + ", content: " + crypted.content; 
+        console.log(crypted);
+        // crypted = "iv: " + crypted.iv + ", content: " + crypted.content; 
+        // console.log(crypted);
+        let decrypted = decrypt(crypted);
+        console.log(decrypted);
         const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
         const info = stmt.run(fName, lNane, email, date, crypted)
         console.log(info.lastInsertRowid);

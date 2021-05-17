@@ -79,7 +79,7 @@ a.nav-link{
     padding-right: 1vw !important;
 }
 
-a.nav-link.login{
+a.nav-link.singin{
     font-weight: 700; 
     border: 2px solid rgb(0, 0, 0);
     border-radius:10px;
@@ -87,7 +87,7 @@ a.nav-link.login{
     padding-right: 1vw !important;
 }
 
-a.nav-link.login:hover{
+a.nav-link.singin:hover{
     background-color: black;
     /* background-color: #505050; */
     /* border-color: #505050; */

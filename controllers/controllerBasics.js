@@ -14,7 +14,7 @@ exports.getRegistration = (req, res) => {
 }
 
 exports.getLogin = (req, res) => [
-    res.render("login", { title: "Login", exist:"" })
+    res.render("login", { title: "Login", exist: "" })
 ]
 
 exports.getConstruction = (req, res) => {
@@ -37,12 +37,18 @@ exports.getWelcomeBack = (req, res) => {
     console.log(decrypted);
 
 
-    if(row == undefined){
+    if (row == undefined) {
         console.log("no user found")
-        res.render("login", {title:"Login", exist:"User not found, make Sing in"})
-    }else if(row.email == email && decrypted == pwd){
+        res.render("login", { title: "Login", exist: "User not found, make Sing in" })
+    } else if (row.email == email) {
         console.log("user found");
-        res.render("welcomeBack", {title:"Welcome back"})
+        if (decrypted == pwd) {
+            console.log("password correct");
+            res.render("welcomeBack", { title: `Welcome back ${row.fName}` })
+        } else {
+            console.log("password incorrect")
+            res.render("login", { title: "Login", exist: "Password incorrect" })
+        }
     }
 }
 
@@ -63,8 +69,9 @@ exports.getWelcome = (req, res) => {
         console.log(crypted);
         let decrypted = decrypt(crypted);
         console.log(decrypted);
-        const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
-        const info = stmt.run(fName, lNane, email, date, crypted)
+        let id = Date.now().toString();
+        const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(?, ?, ?, ?, ?, ?)`);
+        const info = stmt.run(id, fName, lNane, email, date, crypted);
         console.log(info.lastInsertRowid);
 
         if (pwd != pwd1) {
@@ -84,7 +91,7 @@ exports.getWelcome = (req, res) => {
                 to: req.body["email"],
                 subject: 'Avvenuta registrazione',
                 attachDataUrls: true,
-                html: '<h1> Thanks ' + `${fName} ${lNane}` + '! ' +  '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
+                html: '<h1> Thanks ' + `${fName} ${lNane}` + '! ' + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
                     '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {
@@ -117,8 +124,9 @@ exports.getWelcome = (req, res) => {
         console.log(crypted);
         let decrypted = decrypt(crypted);
         console.log(decrypted);
-        const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(null, ?, ?, ?, ?, ?)`);
-        const info = stmt.run(fName, lNane, email, date, crypted)
+        let id = Date.now().toString();
+        const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(?, ?, ?, ?, ?, ?)`);
+        const info = stmt.run(id, fName, lNane, email, date, crypted);
         console.log(info.lastInsertRowid);
 
         if (pwd != pwd1) {
@@ -138,7 +146,7 @@ exports.getWelcome = (req, res) => {
                 to: req.body["email"],
                 subject: 'Avvenuta registrazione',
                 attachDataUrls: true,
-                html: '<h1> Thanks ' + `${fName}  ${lNane}` + '! ' +  '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
+                html: '<h1> Thanks ' + `${fName}  ${lNane}` + '! ' + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
                     '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {

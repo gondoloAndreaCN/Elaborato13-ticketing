@@ -112,3 +112,24 @@ a.log-in{
 a.log-in:hover{
     color: #505050;
 }
+
+/* login */
+.formLogin{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: auto;
+    margin-top: 28vh;
+    width: 70vw;
+    left: 0 ;
+    right: 0 ;
+    height: auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px black;
+}
+
+.sep{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}

@@ -6,13 +6,13 @@ const iv = crypto.randomBytes(16); // set random initialisation vector
 
 const encrypt = (text) => {
 
-    const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
+    const cipher = crypto.createCipher(algorithm, secretKey);
 
     const encrypted = Buffer.concat([cipher.update(text), cipher.final()]);
 
     // return {
-        // iv: iv.toString('hex'),
-        // content: encrypted.toString('hex')
+    // iv: iv.toString('hex'),
+    // content: encrypted.toString('hex')
     // };
     return encrypted.toString('hex')
 
@@ -20,7 +20,7 @@ const encrypt = (text) => {
 
 const decrypt = (encrypted) => {
 
-    const decipher = crypto.createDecipheriv(algorithm, secretKey, iv);
+    const decipher = crypto.createDecipher(algorithm, secretKey);
 
     const decrpyted = Buffer.concat([decipher.update(Buffer.from(encrypted, 'hex')), decipher.final()]);
 

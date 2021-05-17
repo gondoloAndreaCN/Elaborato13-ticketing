@@ -14,8 +14,36 @@ exports.getRegistration = (req, res) => {
     res.render("registration", { title: "Registration", exist: "" });
 }
 
+exports.getLogin = (req, res) => [
+    res.render("login", { title: "Login", exist:"" })
+]
+
 exports.getConstruction = (req, res) => {
     res.render("under-construction", { title: "OOPS!!" });
+}
+
+exports.getWelcomeBack = (req, res) => {
+    let email = req.body.logEmail;
+    let pwd = req.body.logPwd;
+
+    console.log(email)
+    const row = db.prepare(`SELECT * FROM User WHERE email = ?`).get(email);
+    console.log(row)
+
+    let pwddb = row.password;
+    console.log(pwddb)
+
+    let decrypted = decrypt(pwddb);
+    console.log(decrypted);
+
+    if(row == undefined){
+        console.log("no user found")
+        res.render("login", {title:"Login", exist:"User not found, make Sing in"})
+    }else if(row.email == email && decrypted == pwd){
+        console.log("user found");
+        res.render("welcomeBack", {title:"Welcome back"})
+    }
+
 }
 
 exports.getWelcome = (req, res) => {
@@ -150,5 +178,4 @@ exports.getEvents = (req, res) => {
             res.render("events", { title: "Events", events });
         }
     });
-
 }

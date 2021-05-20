@@ -2,35 +2,58 @@
 
     <link rel="stylesheet" href="css/event.css">
 
-    <div class="container container-event">
-        <div class="row">
-            <div class="col">
-                <img src="/img/event4.jpg" class="card-img-top image" alt="img event">
-            </div>
-            <div class="col info">
-                <div class="row">
-                    <h1>
-                        <%= name %>
-                    </h1>
-                    <h4>
-                        <%= location %>
-                    </h4>
+    <body onload="disabled()">
+
+        <div class="container container-event">
+            <div class="row">
+                <div class="col">
+                    <img src="/img/event4.jpg" class="card-img-top image" alt="img event">
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <h5>
-                            <%= status %>
-                        </h5>
+                <div class="col info">
+                    <div class="row">
+                        <h1>
+                            <%= name %>
+                        </h1>
+                        <h4>
+                            <%= location %>
+                        </h4>
                     </div>
-                    <div class="col">
-                        <button class="btn btn-primary">Buy ticket</a>
+                    <div class="row">
+                        <div class="col">
+                            <h5 id="status">
+                                <%= status %>
+                            </h5>
+                        </div>
+                        <div class="col">
+                            <form action="/ticket" method="post">
+                                <input type="text" value="<%= name %>" name="nameT" style="display: none;">
+                                <input type="text" value="<%= location %>" name="locationT" style="display: none;">
+                                <input type="text" value="<%= status %>" name="statusT" style="display: none;">
+                                <input type="text" value="<%= sit %>" name="sitT" style="display: none;">
+                                <input type="text" value="<%= price %>" name="priceT" style="display: none;">
+                                <button class="btn btn-primary">Buy ticket</a>
+                            </form>
+                        </div>
+
                     </div>
 
                 </div>
-
             </div>
         </div>
-    </div>
+
+
+        <script>
+            function disabled() {
+                // alert("page is loaded")
+                const status = document.getElementById("status").innerText;
+                if (status == "Sospeso" || status == "Cancellata" || status == "Annullato" ) {
+                    const buy = document.querySelector(".btn")
+                    buy.disabled = true
+                }
+            }
+        </script>
+
+    </body>
 
 
 

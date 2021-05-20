@@ -1,5 +1,5 @@
 .container-event{
-    margin-top: 30vh;
+    margin-top: 22vh;
 }
 
 img.image{
@@ -44,4 +44,39 @@ h5{
     background-color: #505050 !important;
     border-color: #505050 !important;
     box-shadow: none !important;
+}
+
+.btn-primary:disabled{
+    background-color: #505050 !important;
+    border-color: #505050 !important;
+    box-shadow: none !important;
+}
+
+select{
+    box-shadow: none;
+}
+
+select:active{
+    box-shadow: none;
+}
+
+/* ticket */
+
+.form{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: auto;
+    margin: 0 auto;
+    margin-top: 2vh;
+    box-shadow: 0 0 10px black;
+    border-radius: 8px;
+    padding: 2%;
+}
+
+.sit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

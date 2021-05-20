@@ -9,7 +9,7 @@
 	"id":"1",
 	 "name":"Cat Power", 
 	 "location":"dom 20 giu 2021 - h 21:15  |  Piazza Castello - Sesto Al Reghena, Sesto Al Reghena", 
-	 "status":"Disponibile"
+	 "status":"Sospeso"
 	},
 	{
 	"id":"2",
@@ -19,9 +19,11 @@
 	},
 	{
 	"id":"3",
-	 "name":"Placebo", 
-	 "location":"mar 29 giu 2021 - h 21:30  |  Piazza Sordello di Mantova, Mantova", 
-	 "status":"Attualmente non disponibile"
+	 "name":"GIOVANNI LINDO FERRETTI Uin concerto, A Cuor Contento", 
+	 "location":"mar 29 giu 2021 - h 21:00  |  Teatro Romano di Verona, Verona", 
+	 "status":"Disponibile", 
+	 "sit":"Seconda Gradinata Numerata / Intero", 
+	 "price":"34,50"
 	},
 	{
 	"id":"4",
@@ -55,68 +57,86 @@
 	},
 	{
 	"id":"9",
-	 "name":"Tash Sultana", 
-	 "location":"ven 03 set 2021 - h 21:00  |  Circolo Magnolia, Segrate", 
-	 "status":"Disponibile"
+	 "name":"Iosonouncane", 
+	 "location":"mer 14 lug 2021 - h 21:00  |  Piazza del Duomo di Pistoia, Pistoia", 
+	 "status":"Disponibile", 
+	 "sit":"Platea Numerata / Intero", 
+	 "price":"23,00"
 	},
 	{
 	"id":"10",
-	 "name":"Pinguini Tattici Nucleari", 
-	 "location":"sab 25 set 2021 - h 21:30  |  Zoppas Arena, Conegliano", 
-	 "status":"Disponibile"
+	 "name":"VASCO BRONDI Paesaggio dopo la battaglia tour", 
+	 "location":"dom 18 lug 2021 - h 21:00  |  Castello Scaligero - Villafranca di Verona, Villafranca di Verona", 
+	 "status":"Disponibile", 
+	 "sit":"Platea Centrale / Intero", 
+	 "price":"40,25"
 	},
 	{
 	"id":"11",
-	 "name":"Boy Pablo", 
-	 "location":"dom 26 set 2021 - h 21:00  |  Magazzini Generali, Milano", 
-	 "status":"Disponibile"
+	 "name":"Tash Sultana", 
+	 "location":"ven 03 set 2021 - h 21:00  |  Circolo Magnolia, Segrate", 
+	 "status":"Disponibile", 
+	 "sit":"Posto Unico / Intero", 
+	 "price":"40,25"
 	},
 	{
 	"id":"12",
 	 "name":"Pinguini Tattici Nucleari", 
-	 "location":"gio 14 ott 2021 - h 21:30  |  Kioene Arena, Padova", 
-	 "status":"Disponibile"
+	 "location":"sab 25 set 2021 - h 21:30  |  Zoppas Arena, Conegliano", 
+	 "status":"Disponibile", 
+	 "sit":"Posto Unico / Intero", 
+	 "price":"34,50"
 	},
 	{
 	"id":"13",
-	 "name":"BLACK MIDI", 
-	 "location":"mar 14 dic 2021 - h 21:00  |  Circolo Magnolia, Segrate", 
-	 "status":"Disponibile"
+	 "name":"Boy Pablo", 
+	 "location":"dom 26 set 2021 - h 21:00  |  Magazzini Generali, Milano", 
+	 "status":"Disponibile", 
+	 "sit":"Posto Unico / Intero", 
+	 "price":"27,60"
 	},
 	{
 	"id":"14",
-	 "name":"SQu'UR: JIM JARMUSCH & CARTER LOGAN", 
-	 "location":"mar 01 feb 2022 - h 21:00  |  Auditorium Teatro Manzoni, Bologna", 
-	 "status":"Disponibile"
+	 "name":"Pinguini Tattici Nucleari", 
+	 "location":"gio 14 ott 2021 - h 21:30  |  Kioene Arena, Padova", 
+	 "status":"Low availability"
 	},
 	{
 	"id":"15",
-	 "name":"LIME CORDIALE", 
-	 "location":"lun 14 feb 2022 - h 21:30  |  Legend Club, Milano", 
-	 "status":"Disponibile"
+	 "name":"BLACK MIDI", 
+	 "location":"mar 14 dic 2021 - h 21:00  |  Circolo Magnolia, Segrate", 
+	 "status":"Disponibile", 
+	 "sit":"Posto Unico / Intero", 
+	 "price":"20,70"
 	},
 	{
 	"id":"16",
-	 "name":"WOODKID", 
-	 "location":"gio 21 apr 2022 - h 21:00  |  Alcatraz, Milano", 
-	 "status":"Disponibile"
+	 "name":"SQu'UR: JIM JARMUSCH & CARTER LOGAN", 
+	 "location":"mar 01 feb 2022 - h 21:00  |  Auditorium Teatro Manzoni, Bologna", 
+	 "status":"Disponibile", 
+	 "sit":"Prima Platea / Intero", 
+	 "price":"43,70"
 	},
 	{
 	"id":"17",
-	 "name":"Novo Amor", 
-	 "location":"mer 27 apr 2022 - h 21:00  |  Santeria Toscana 31, Milano", 
-	 "status":"Disponibile"
+	 "name":"LIME CORDIALE", 
+	 "location":"lun 14 feb 2022 - h 21:30  |  Legend Club, Milano", 
+	 "status":"Disponibile", 
+	 "sit":"Posto Unico / Intero", 
+	 "price":"13,80"
 	},
 	{
 	"id":"18",
-	 "name":"Foo Fighters", 
-	 "location":"dom 12 giu 2022 - h 17:00  |  Ippodromo Milano Trenno, Milano", 
-	 "status":"Disponibile"
+	 "name":"THE LUMINEERS", 
+	 "location":"mer 16 feb 2022 - h 21:00  |  Lorenzini District, Milano", 
+	 "status":"Announcement"
 	},
 	{
 	"id":"19",
-	 "name":"Green Day", 
-	 "location":"gio 16 giu 2022 - h 16:00  |  Visarno Arena, Firenze", 
-	 "status":"Disponibile"
+	 "name":"WOODKID", 
+	 "location":"gio 21 apr 2022 - h 21:00  |  Alcatraz, Milano", 
+	 "status":"Disponibile", 
+	 "sit":"Posto Unico / Intero", 
+	 "price":"36,80"
 	}
 ]

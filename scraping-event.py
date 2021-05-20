@@ -49,7 +49,6 @@ for link in productlinks:
 
 for link in productlinks:
 
-	
 
 	if(link[:29] == 'https://shop.ticketmaster.it/'):
 		r = requests.get(link, headers = headers)
@@ -57,36 +56,55 @@ for link in productlinks:
 		content = content.replace('&nbsp;', '')
 		soup = BeautifulSoup(content, 'lxml')
 
-		# soup = soup.replace("&nbsp;", "")
-
 		name = soup.find('h1', class_='text_h3 bold').text.strip()
 		location = soup.find('h2', class_='text_p margin-bottom').text.strip()
 		status = soup.find('span', class_='badge').text.strip()
-		
-		location = location.replace('\\xc2', ' ')
-		location = location.replace('\\xa0', ' ')
-		name = name.replace('\\xc3', 'u\'')
-		name = name.replace('\\xb9', '')
-		name = name.replace('\\x9c', 'U')
-		name = name.replace("'", "'")
-		name = name.replace('\\', '')
-		
+		if(status == "Disponibile"):
+			sit = soup.find('h3', class_= 'text_h4').text.strip()
+			price = soup.find('td', align="right").text.strip()
 
-		id = i
-		
-		# myObj = {
-  		# 	"name":"John",
-  		# 	"age":30,
-  		# 	"cars": {
-    	# 		"car1":"Ford",
-    	# 		"car2":"BMW",
-    	# 		"car3":"Fiat"
-		# 	}
-  		# }
+			location = location.replace('\\xc2', ' ')
+			location = location.replace('\\xa0', ' ')
+			name = name.replace('\\xc3', 'u\'')
+			name = name.replace('\\xb9', '')
+			name = name.replace('\\x9c', 'U')
+			name = name.replace("'", "'")
+			name = name.replace('\\xe2', '')
+			name = name.replace('\\x9d', '')
+			name = name.replace('\\x80', '')
+			name = name.replace('\\', '')
+			price = price.replace('\\xc2', '')
+			price = price.replace('\\xa0', '')
+			price = price.replace('\\xe2', '')
+			price = price.replace('\\x82', '')
+			price = price.replace('\\xac', ' ')
+			price = price[:5]
+			print(price)
+			
+			id = i
 
-		events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + '\n\t}'
+			events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + ', \n\t "sit":' + '"' + sit + '"' + ', \n\t "price":' + '"' + price + '"' + '\n\t}'
+
+			jsonFile.write(events)
+
+		else:
 		
-		jsonFile.write(events)
+			location = location.replace('\\xc2', ' ')
+			location = location.replace('\\xa0', ' ')
+			name = name.replace('\\xc3', 'u\'')
+			name = name.replace('\\xb9', '')
+			name = name.replace('\\x9c', 'U')
+			name = name.replace("'", "'")
+			name = name.replace('\\xe2', '')
+			name = name.replace('\\x9d', '')
+			name = name.replace('\\x80', '')
+			name = name.replace('\\', '')
+			
+			id = i
+
+			events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + '\n\t}'
+			
+			jsonFile.write(events)
 
 	if(i != counter-1 and link[:29] == 'https://shop.ticketmaster.it/'):
 		

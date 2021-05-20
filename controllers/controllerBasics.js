@@ -182,9 +182,20 @@ exports.getEvents = (req, res) => {
     });
 }
 
-exports.getEvent =  (req, res) => {
+exports.getEvent = (req, res) => {
     let name = req.body.name;
     let location = req.body.location;
     let status = req.body.status;
-    res.render("event", {title: name, name: name, location: location, status: status});
+    let sit = req.body.sit;
+    let price = req.body.price;
+    res.render("event", { title: name, name: name, location: location, status: status, sit: sit , price: price});
+}
+
+exports.getTicket = (req, res) => {
+    let nameT = req.body.nameT;
+    let locationT = req.body.locationT;
+    let statusT = req.body.statusT;
+    let sitT = req.body.sitT;
+    let priceT = req.body.priceT;
+    res.render("ticket", { title: nameT, name: nameT, location: locationT, status: statusT, sit: sitT, price: priceT })
 }

@@ -1,0 +1,55 @@
+<%- include('./partials/header') %>
+
+    <link rel="stylesheet" href="css/event.css">
+
+
+    <div class="container container-event">
+        <form action="" method="post" class="form">
+            <div class="form-row">
+                <div class="row">
+                    <div class="col info">
+                        <h1>
+                            <%= name %>
+                        </h1>
+                        <h4>
+                            <%= location %>
+                        </h4>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <h4>Number of tickets</h4>
+                            <select multiple class="form-control" multiple aria-label="multiple select example">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col sit">
+                        <div class="form-check">
+                            <h4>Posto:</h4>
+                            <h6>
+                                <%= sit %>
+                            </h6>
+                            <br>
+                            <h4> Pezzo:</h4>
+                            <h6>
+                                <%= price %>€
+                            </h6>
+                            <br>
+                        </div>
+                        <button class="btn btn-primary" style="width: 40%;">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <%- include('./partials/footer') %>

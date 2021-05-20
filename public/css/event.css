@@ -12,7 +12,6 @@ img.image{
     justify-content: space-evenly;
 }
 
-
 h5{
     padding: .7rem;
     border: 2px solid rgb(0, 0, 0);
@@ -79,4 +78,8 @@ select:active{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.form-row{
+    width: 100%;
 }

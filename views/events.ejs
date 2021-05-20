@@ -3,8 +3,12 @@
     <link rel="stylesheet" href="css/events.css">
 
     <body>
+        <div class="loader">
+            <img class="img-loader" src="https://i.giphy.com/media/l3nWhI38IWDofyDrW/giphy.webp" alt="Loading...">
+        </div>
 
         <div class="container container-card">
+
 
             <div class="row">
                 <% events.forEach(function(event, index){ %>
@@ -21,11 +25,16 @@
                                 <ul class="list-group list-group-flush">
 
                                     <form action="/event" method="post">
-                                        <input type="text" value="<%= event['name'] %>" name="name" style="display: none;">
-                                        <input type="text" value="<%= event['location'] %>" name="location" style="display: none;">
-                                        <input type="text" value="<%= event['status'] %>" name="status" style="display: none;">
-                                        <input type="text" value="<%= event['sit'] %>" name="sit" style="display: none;">
-                                        <input type="text" value="<%= event['price'] %>" name="price" style="display: none;">
+                                        <input type="text" value="<%= event['name'] %>" name="name"
+                                            style="display: none;">
+                                        <input type="text" value="<%= event['location'] %>" name="location"
+                                            style="display: none;">
+                                        <input type="text" value="<%= event['status'] %>" name="status"
+                                            style="display: none;">
+                                        <input type="text" value="<%= event['sit'] %>" name="sit"
+                                            style="display: none;">
+                                        <input type="text" value="<%= event['price'] %>" name="price"
+                                            style="display: none;">
                                         <button class="btn btn-primary">Go to event</a>
                                     </form>
 

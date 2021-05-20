@@ -99,7 +99,9 @@
 	"id":"14",
 	 "name":"Pinguini Tattici Nucleari", 
 	 "location":"gio 14 ott 2021 - h 21:30  |  Kioene Arena, Padova", 
-	 "status":"Low availability"
+	 "status":"Low availability", 
+	 "sit":"1 Tribuna Vis Lat Limitata / Intero", 
+	 "price":"39,10"
 	},
 	{
 	"id":"15",

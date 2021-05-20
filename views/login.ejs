@@ -14,7 +14,7 @@
                 <div data-x="140" class="el" id="el"><i class="fas fa-glass-cheers"></i></div>
                 <div data-x="90" class="el" id="el"><i class="fas fa-ticket-alt"></i></i></div>
             </div>
-            <form action="/welcomeBack" class="registration needs-validation" method="POST" name="logForm">
+            <form action="/ticket" class="registration needs-validation" method="POST" name="logForm">
                 <h6 class="exist">
                     <%= exist %>
                 </h6>
@@ -31,12 +31,16 @@
                     <div class="row">
                         <div class="col">
                             <p>Password</p>
-                            <input type="password" class="form-control" placeholder="password" id="logPwd"
-                                name="logPwd" required>
+                            <input type="password" class="form-control" placeholder="password" id="logPwd" name="logPwd"
+                                required>
                         </div>
                     </div>
                     <hr class="sep">
                     <div class="row">
+                        <input type="text" value="<%= name %>" name="nameT" style="display: none;">
+                        <input type="text" value="<%= location %>" name="locationT" style="display: none;">
+                        <input type="text" value="<%= sit %>" name="sitT" style="display: none;">
+                        <input type="text" value="<%= price %>" name="priceT" style="display: none;">
                         <button id="validate" class="btn btn-primary">Submit</button>
                     </div>
                     <div class="row">

@@ -59,7 +59,7 @@ for link in productlinks:
 		name = soup.find('h1', class_='text_h3 bold').text.strip()
 		location = soup.find('h2', class_='text_p margin-bottom').text.strip()
 		status = soup.find('span', class_='badge').text.strip()
-		if(status == "Disponibile"):
+		if(status == "Disponibile" or status == "Low availability"):
 			sit = soup.find('h3', class_= 'text_h4').text.strip()
 			price = soup.find('td', align="right").text.strip()
 
@@ -73,15 +73,17 @@ for link in productlinks:
 			name = name.replace('\\x9d', '')
 			name = name.replace('\\x80', '')
 			name = name.replace('\\', '')
+			sit = sit.replace("\\xc2\\xb0", '')
 			price = price.replace('\\xc2', '')
 			price = price.replace('\\xa0', '')
 			price = price.replace('\\xe2', '')
 			price = price.replace('\\x82', '')
 			price = price.replace('\\xac', ' ')
 			price = price[:5]
-			print(price)
 			
 			id = i
+			print(name)
+			print(price)
 
 			events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + ', \n\t "sit":' + '"' + sit + '"' + ', \n\t "price":' + '"' + price + '"' + '\n\t}'
 

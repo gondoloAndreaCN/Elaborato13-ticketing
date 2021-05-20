@@ -4,6 +4,10 @@
 
     <body onload="disabled()">
 
+        <div class="loader">
+            <img class="img-loader" src="https://i.giphy.com/media/l3nWhI38IWDofyDrW/giphy.webp" alt="Loading...">
+        </div>
+
         <div class="container container-event">
             <div class="row">
                 <div class="col">
@@ -25,7 +29,7 @@
                             </h5>
                         </div>
                         <div class="col">
-                            <form action="/ticket" method="post">
+                            <form action="/login" method="post">
                                 <input type="text" value="<%= name %>" name="nameT" style="display: none;">
                                 <input type="text" value="<%= location %>" name="locationT" style="display: none;">
                                 <input type="text" value="<%= status %>" name="statusT" style="display: none;">
@@ -46,11 +50,12 @@
             function disabled() {
                 // alert("page is loaded")
                 const status = document.getElementById("status").innerText;
-                if (status == "Sospeso" || status == "Cancellata" || status == "Annullato" ) {
+                if (status == "Sospeso" || status == "Cancellata" || status == "Annullato") {
                     const buy = document.querySelector(".btn")
                     buy.disabled = true
                 }
             }
+
         </script>
 
     </body>

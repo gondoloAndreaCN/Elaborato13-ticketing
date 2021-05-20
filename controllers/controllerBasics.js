@@ -13,41 +13,46 @@ exports.getRegistration = (req, res) => {
     res.render("registration", { title: "Registration", exist: "" });
 }
 
-exports.getLogin = (req, res) => [
-    res.render("login", { title: "Login", exist: "" })
-]
+exports.getLogin = (req, res) => {
+    let nameT = req.body.nameT;
+    let locationT = req.body.locationT;
+    let statusT = req.body.statusT;
+    let sitT = req.body.sitT;
+    let priceT = req.body.priceT;
+
+    res.render("login", { title: "Login", exist: "", name: nameT, location: locationT, status: statusT, sit: sitT, price: priceT })
+}
 
 exports.getConstruction = (req, res) => {
     res.render("under-construction", { title: "OOPS!!" });
 }
 
-exports.getWelcomeBack = (req, res) => {
+exports.getTicket = (req, res) => {
     let email = req.body.logEmail;
     let pwd = req.body.logPwd;
-    console.log(pwd)
 
-    console.log(email)
+    let nameT = req.body.nameT;
+    let locationT = req.body.locationT;
+    let sitT = req.body.sitT;
+    let priceT = req.body.priceT;
+
+
     const row = db.prepare(`SELECT * FROM User WHERE email = ?`).get(email);
-    console.log(row)
-
-    let pwddb = row.password;
-    console.log(pwddb)
-
-    let decrypted = decrypt(pwddb);
-    console.log(decrypted);
 
 
     if (row == undefined) {
         console.log("no user found")
-        res.render("login", { title: "Login", exist: "User not found, make Sing in" })
+        res.render("login", { title: "Login", exist: "User not found, make Sing in", name: nameT, location: locationT, sit: sitT, price: priceT, email: email})
     } else if (row.email == email) {
+        let pwddb = row.password;
+        let decrypted = decrypt(pwddb);
         console.log("user found");
         if (decrypted == pwd) {
             console.log("password correct");
-            res.render("welcomeBack", { title: `Welcome back ${row.fName}` })
+            res.render("ticket", { title: nameT, name: nameT, location: locationT, sit: sitT, price: priceT, email: email })
         } else {
             console.log("password incorrect")
-            res.render("login", { title: "Login", exist: "Password incorrect" })
+            res.render("login", { title: "Login", exist: "Password incorrect", name: nameT, location: locationT, sit: sitT, price: priceT, email: email })
         }
     }
 }
@@ -188,14 +193,6 @@ exports.getEvent = (req, res) => {
     let status = req.body.status;
     let sit = req.body.sit;
     let price = req.body.price;
-    res.render("event", { title: name, name: name, location: location, status: status, sit: sit , price: price});
+    res.render("event", { title: name, name: name, location: location, status: status, sit: sit, price: price });
 }
 
-exports.getTicket = (req, res) => {
-    let nameT = req.body.nameT;
-    let locationT = req.body.locationT;
-    let statusT = req.body.statusT;
-    let sitT = req.body.sitT;
-    let priceT = req.body.priceT;
-    res.render("ticket", { title: nameT, name: nameT, location: locationT, status: statusT, sit: sitT, price: priceT })
-}

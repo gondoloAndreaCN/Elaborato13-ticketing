@@ -10,5 +10,8 @@ router.route("/event").post(controllerBasic.getEvent);
 router.route("/registration").get(controllerBasic.getRegistration);
 router.route("/login").post(controllerBasic.getLogin);
 router.route("/under-construction").get(controllerBasic.getConstruction);
+// 
+router.route("/personal").post(controllerBasic.getPersonal);
+router.route("/addEvent").post(controllerBasic.getAddEvent);
 
 module.exports = router;

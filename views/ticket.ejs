@@ -9,7 +9,7 @@
         </div>
 
         <div class="container container-event">
-            <form action="/" method="get" class="form">
+            <form action="/addEvent" method="post" class="form">
                 <div class="form-row">
                     <div class="row">
                         <div class="col info">
@@ -40,6 +40,7 @@
                                 <h4>Posto:</h4>
                                 <h6>
                                     <%= sit %>
+                                        <%= email %>
                                 </h6>
                                 <br>
                                 <h4> Pezzo:</h4>
@@ -48,7 +49,14 @@
                                 </h6>
                                 <br>
                             </div>
+
+                            <input type="text" value="<%= email %>" name="email" style="display: none;">
+                            <input type="text" value="<%= name %>" name="name" style="display: none;">
+                            <input type="text" value="<%= location %>" name="location" style="display: none;">
+                            <input type="text" value="<%= sit %>" name="sit" style="display: none;">
+                            <input type="text" value="<%= price %>" name="price" style="display: none;">
                             <button class="btn btn-primary" style="width: 40%;">Confirm</button>
+
                         </div>
                     </div>
                 </div>
@@ -56,8 +64,6 @@
         </div>
 
     </body>
-
-
 
 
     <%- include('./partials/footer') %>

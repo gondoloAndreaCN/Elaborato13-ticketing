@@ -6,14 +6,19 @@ const { encrypt, decrypt } = require('../public/js/db/crypto');
 let { PythonShell } = require('python-shell')
 
 exports.getHome = (req, res) => {
+    console.log("home")
     res.render("index", { title: "Home" });
 }
 
 exports.getRegistration = (req, res) => {
+    console.log("reg")
+
     res.render("registration", { title: "Registration", exist: "" });
 }
 
 exports.getLogin = (req, res) => {
+    console.log("log")
+
     let nameT = req.body.nameT;
     let locationT = req.body.locationT;
     let statusT = req.body.statusT;
@@ -24,10 +29,14 @@ exports.getLogin = (req, res) => {
 }
 
 exports.getConstruction = (req, res) => {
+    console.log("und")
+
     res.render("under-construction", { title: "OOPS!!" });
 }
 
 exports.getTicket = (req, res) => {
+    console.log("tic")
+
     let email = req.body.logEmail;
     let pwd = req.body.logPwd;
 
@@ -42,7 +51,7 @@ exports.getTicket = (req, res) => {
 
     if (row == undefined) {
         console.log("no user found")
-        res.render("login", { title: "Login", exist: "User not found, make Sing in", name: nameT, location: locationT, sit: sitT, price: priceT, email: email})
+        res.render("login", { title: "Login", exist: "User not found, make Sing in", name: nameT, location: locationT, sit: sitT, price: priceT, email: email })
     } else if (row.email == email) {
         let pwddb = row.password;
         let decrypted = decrypt(pwddb);
@@ -58,8 +67,10 @@ exports.getTicket = (req, res) => {
 }
 
 exports.getWelcome = (req, res) => {
+    console.log("wel")
+
     let fName = req.body.fName;
-    let lNane = req.body.lName;
+    let lName = req.body.lName;
     let email = req.body.email;
     let date = req.body.date;
     let pwd = req.body.pwd;
@@ -76,7 +87,7 @@ exports.getWelcome = (req, res) => {
         console.log(decrypted);
         let id = Date.now().toString();
         const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(?, ?, ?, ?, ?, ?)`);
-        const info = stmt.run(id, fName, lNane, email, date, crypted);
+        const info = stmt.run(id, fName, lName, email, date, crypted);
         console.log(info.lastInsertRowid);
 
         if (pwd != pwd1) {
@@ -96,7 +107,7 @@ exports.getWelcome = (req, res) => {
                 to: req.body["email"],
                 subject: 'Avvenuta registrazione',
                 attachDataUrls: true,
-                html: '<h1> Thanks ' + `${fName} ${lNane}` + '! ' + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
+                html: '<h1> Thanks ' + `${fName} ${lName}` + '! ' + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
                     '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {
@@ -121,7 +132,7 @@ exports.getWelcome = (req, res) => {
         console.log("email already exist");
         console.log(email);
         console.log(row.email);
-        res.render("registration", { title: "Registration", exist: "User already exist, Log in" });
+        res.render("registration", { title: "Registration", exist: "User already exist" });
     } else if (row.email != email) {
         console.log(row.email);
         console.log("new user")
@@ -131,7 +142,7 @@ exports.getWelcome = (req, res) => {
         console.log(decrypted);
         let id = Date.now().toString();
         const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(?, ?, ?, ?, ?, ?)`);
-        const info = stmt.run(id, fName, lNane, email, date, crypted);
+        const info = stmt.run(id, fName, lName, email, date, crypted);
         console.log(info.lastInsertRowid);
 
         if (pwd != pwd1) {
@@ -151,7 +162,7 @@ exports.getWelcome = (req, res) => {
                 to: req.body["email"],
                 subject: 'Avvenuta registrazione',
                 attachDataUrls: true,
-                html: '<h1> Thanks ' + `${fName}  ${lNane}` + '! ' + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
+                html: '<h1> Thanks ' + `${fName}  ${lName}` + '! ' + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
                     '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {
@@ -175,6 +186,8 @@ exports.getWelcome = (req, res) => {
 
 
 exports.getEvents = (req, res) => {
+    console.log("events")
+
     let finish = 0;
     PythonShell.run('./scraping-event.py', null, function (err) {
         if (err) throw err;
@@ -188,11 +201,56 @@ exports.getEvents = (req, res) => {
 }
 
 exports.getEvent = (req, res) => {
+    console.log("event")
+
     let name = req.body.name;
     let location = req.body.location;
     let status = req.body.status;
     let sit = req.body.sit;
     let price = req.body.price;
     res.render("event", { title: name, name: name, location: location, status: status, sit: sit, price: price });
+}
+
+// 
+exports.getPersonal = (req, res) => {
+//     let email = req.body.email;
+
+//     const row = db.prepare(`SELECT * FROM Event WHERE email = ?`).get(email);
+//     console.log(row)
+
+
+
+//     if (row == undefined) {
+//         console.log("no user found")
+//         res.render("personal", { title: "personal" })
+//     } else if (row.email == email) {
+//         let pwddb = row.password;
+//         let decrypted = decrypt(pwddb);
+//         console.log("user found");
+//         if (decrypted == pwd) {
+//             console.log("password correct");
+//             res.render("personal", { title: "personal" })
+//         } else {
+//             console.log("password incorrect")
+//             res.render("personal", { title: "personal" })
+//         }
+//     }
+
+}
+
+exports.getAddEvent = (req, res) => {
+    console.log("add")
+
+    let email = req.body.email;
+    let name = req.body.name;
+    let location = req.body.location;
+    let sit = req.body.sit;
+    let price = req.body.price;
+
+    let id = Date.now().toString();
+    const stmt = db.prepare(`INSERT INTO Event(id, name, location, sit, email, price) VALUES(?, ?, ?, ?, ?, ?)`);
+    const info = stmt.run(id, name, location, sit, email, price);
+    console.log(info.lastInsertRowid);
+    res.render("personal", { title: "Prsonal area" })
 }
 

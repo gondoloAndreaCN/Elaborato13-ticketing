@@ -35,7 +35,6 @@ exports.getPersonalLog = (req, res) => {
     res.render("logEvent", { title: "Login", exist: "" })
 }
 
-
 exports.getConstruction = (req, res) => {
     console.log("und")
 
@@ -75,18 +74,18 @@ exports.getTicket = (req, res) => {
 }
 
 // 
-exports.getPersonal = async function (req, res) {
+exports.getPersonal = (req, res) => {
 
     console.log("personal")
 
     let email = req.body.logEmail;
     let pwd = req.body.logPwd;
 
-    let name = req.body.name;
-    let location = req.body.location;
-    let sit = req.body.sit;
-    let price = req.body.price;
-    let number = req.body.nTicket;
+    // let name = req.body.name;
+    // let location = req.body.location;
+    // let sit = req.body.sit;
+    // let price = req.body.price;
+    // let number = req.body.nTicket;
 
     const row = db.prepare(`SELECT * FROM User WHERE email = ?`).get(email);
 
@@ -101,7 +100,7 @@ exports.getPersonal = async function (req, res) {
             console.log("user found");
             if (decrypted == pwd) {
                 console.log("password correct");
-                res.render("personal", { title: "personal", rowEv })
+                res.render("personal", { title: "Personal", rowEv })
             } else {
                 console.log("password incorrect")
                 res.render("logEvent", { title: "Login", exist: "Password incorrect" })
@@ -109,12 +108,24 @@ exports.getPersonal = async function (req, res) {
         }
     }
 
+}
+
+exports.getQr = async function (req, res) {
+    let email = req.body.logEmail;
+    let name = req.body.name;
+    let location = req.body.location;
+    let sit = req.body.sit;
+    let price = req.body.price;
+    let number = req.body.nTicket;
+
     if (price != undefined) {
         price = price.replace(",", ".");
         price = parseFloat(price);
 
         let url = Date.now() + (Math.floor(Math.random() * 10000) + 1000);
         url = url.toString();
+
+        if (url.lenght === 0) res.send("Empty Data!");
 
         let cost = price * parseInt(number);
 
@@ -126,17 +137,33 @@ exports.getPersonal = async function (req, res) {
 
         let qrImage = await qr.toDataURL(url);
 
-        window.location.href("scan")
+        res.render("qrInfo", { title: "Info" });
 
-        res.render("scan", { title: "qr", qrImage });
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'ticket.radar@gmail.com',
+                pass: 'Ticket4251'
+            }
+        });
 
-        // res.render("personal", { title: "Prsonal area", rowEv })
+        let mailOptions = {
+            from: 'ticket.radar@gmail.com',
+            to: email,
+            subject: 'Qrcode evento',
+            attachDataUrls: true,
+            html: `<img src="${qrImage}">`
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+
     }
-
-}
-
-exports.getQr = (req, res) => {
-    res.render("scan", { title: "qr", qrImage });
 }
 
 exports.getWelcome = (req, res) => {
@@ -180,7 +207,7 @@ exports.getWelcome = (req, res) => {
                 to: req.body["email"],
                 subject: 'Avvenuta registrazione',
                 attachDataUrls: true,
-                html: '<h1> Thanks ' + `${fName} ${lName}` + '! ' + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
+                html: '<h1> Grazie ' + `${fName} ${lName}` + '! ' + '</h1> <br> <h2> Ora fai parte della community </h2> <br>' +
                     '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {

@@ -213,28 +213,30 @@ exports.getEvent = (req, res) => {
 
 // 
 exports.getPersonal = (req, res) => {
-//     let email = req.body.email;
+    res.render("personal", { title: "Prsonal area" })
 
-//     const row = db.prepare(`SELECT * FROM Event WHERE email = ?`).get(email);
-//     console.log(row)
+    //     let email = req.body.email;
+
+    //     const row = db.prepare(`SELECT * FROM Event WHERE email = ?`).get(email);
+    //     console.log(row)
 
 
 
-//     if (row == undefined) {
-//         console.log("no user found")
-//         res.render("personal", { title: "personal" })
-//     } else if (row.email == email) {
-//         let pwddb = row.password;
-//         let decrypted = decrypt(pwddb);
-//         console.log("user found");
-//         if (decrypted == pwd) {
-//             console.log("password correct");
-//             res.render("personal", { title: "personal" })
-//         } else {
-//             console.log("password incorrect")
-//             res.render("personal", { title: "personal" })
-//         }
-//     }
+    //     if (row == undefined) {
+    //         console.log("no user found")
+    //         res.render("personal", { title: "personal" })
+    //     } else if (row.email == email) {
+    //         let pwddb = row.password;
+    //         let decrypted = decrypt(pwddb);
+    //         console.log("user found");
+    //         if (decrypted == pwd) {
+    //             console.log("password correct");
+    //             res.render("personal", { title: "personal" })
+    //         } else {
+    //             console.log("password incorrect")
+    //             res.render("personal", { title: "personal" })
+    //         }
+    //     }
 
 }
 
@@ -246,11 +248,17 @@ exports.getAddEvent = (req, res) => {
     let location = req.body.location;
     let sit = req.body.sit;
     let price = req.body.price;
+    let number = req.body.nTicket;
+
+    price = price.replace(",", ".");
+    price = parseFloat(price);
+
+    let cost = price * parseInt(number);
 
     let id = Date.now().toString();
-    const stmt = db.prepare(`INSERT INTO Event(id, name, location, sit, email, price) VALUES(?, ?, ?, ?, ?, ?)`);
-    const info = stmt.run(id, name, location, sit, email, price);
+    const stmt = db.prepare(`INSERT INTO Event(id, name, location, sit, email, price, nTicket) VALUES(?, ?, ?, ?, ?, ?, ?)`);
+    const info = stmt.run(id, name, location, sit, email, cost, number);
     console.log(info.lastInsertRowid);
-    res.render("personal", { title: "Prsonal area" })
+    // res.render("personal", { title: "Prsonal area" })
 }
 

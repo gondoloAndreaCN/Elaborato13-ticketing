@@ -14,7 +14,7 @@ exports.getHome = (req, res) => {
 exports.getRegistration = (req, res) => {
     console.log("reg")
 
-    res.render("registration", { title: "Registration", exist: "" });
+    res.render("registration", { title: "Registrazione", exist: "" });
 }
 
 exports.getLogin = (req, res) => {
@@ -58,7 +58,7 @@ exports.getTicket = (req, res) => {
 
     if (row == undefined) {
         console.log("no user found")
-        res.render("login", { title: "Login", exist: "User not found, make Sing in", name: nameT, location: locationT, sit: sitT, price: priceT, email: email })
+        res.render("login", { title: "Login", exist: "Utente non trovato, registrati", name: nameT, location: locationT, sit: sitT, price: priceT, email: email })
     } else if (row.email == email) {
         let pwddb = row.password;
         let decrypted = decrypt(pwddb);
@@ -68,7 +68,7 @@ exports.getTicket = (req, res) => {
             res.render("ticket", { title: nameT, name: nameT, location: locationT, sit: sitT, price: priceT, email: email })
         } else {
             console.log("password incorrect")
-            res.render("login", { title: "Login", exist: "Password incorrect", name: nameT, location: locationT, sit: sitT, price: priceT, email: email })
+            res.render("login", { title: "Login", exist: "Password non corretta", name: nameT, location: locationT, sit: sitT, price: priceT, email: email })
         }
     }
 }
@@ -93,17 +93,17 @@ exports.getPersonal = (req, res) => {
         const rowEv = db.prepare(`SELECT * FROM Event WHERE email = ?`).all(email);
         if (row == undefined) {
             console.log("no user found")
-            res.render("logEvent", { title: "Login", exist: "User not found, make Sing in" })
+            res.render("logEvent", { title: "Login", exist: "Utente non trovato, registrati" })
         } else if (row.email == email) {
             let pwddb = row.password;
             let decrypted = decrypt(pwddb);
             console.log("user found");
             if (decrypted == pwd) {
                 console.log("password correct");
-                res.render("personal", { title: "Personal", rowEv })
+                res.render("personal", { title: "Personale", rowEv })
             } else {
                 console.log("password incorrect")
-                res.render("logEvent", { title: "Login", exist: "Password incorrect" })
+                res.render("logEvent", { title: "Login", exist: "Password non corretta" })
             }
         }
     }
@@ -191,9 +191,9 @@ exports.getWelcome = (req, res) => {
         console.log(info.lastInsertRowid);
 
         if (pwd != pwd1) {
-            res.render("registration", { title: "Registration", exist: "" });
+            res.render("registration", { title: "Registrazione", exist: "" });
         } else if (pwd == pwd1) {
-            res.render("welcome", { title: "Welcome" });
+            res.render("welcome", { title: "Benvenuto" });
             let transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
@@ -232,7 +232,7 @@ exports.getWelcome = (req, res) => {
         console.log("email already exist");
         console.log(email);
         console.log(row.email);
-        res.render("registration", { title: "Registration", exist: "User already exist" });
+        res.render("registration", { title: "Registrazione", exist: "L'utente esiste già" });
     } else if (row.email != email) {
         console.log(row.email);
         console.log("new user")
@@ -246,7 +246,7 @@ exports.getWelcome = (req, res) => {
         console.log(info.lastInsertRowid);
 
         if (pwd != pwd1) {
-            res.render("registration", { title: "Registration", exist: "" });
+            res.render("registration", { title: "Registrazione", exist: "" });
         } else if (pwd == pwd1) {
             res.render("welcome", { title: "Welcome" });
             let transporter = nodemailer.createTransport({
@@ -295,7 +295,7 @@ exports.getEvents = (req, res) => {
         finish = 1;
         if (finish == 1) {
             const events = require("../events.json");
-            res.render("events", { title: "Events", events });
+            res.render("events", { title: "Eventi", events });
         }
     });
 }
@@ -310,7 +310,3 @@ exports.getEvent = (req, res) => {
     let price = req.body.price;
     res.render("event", { title: name, name: name, location: location, status: status, sit: sit, price: price });
 }
-
-
-
-

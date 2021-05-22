@@ -28,6 +28,13 @@ exports.getLogin = (req, res) => {
     res.render("login", { title: "Login", exist: "", name: nameT, location: locationT, status: statusT, sit: sitT, price: priceT })
 }
 
+exports.getPersonalLog = (req, res) => {
+    console.log("logEv")
+
+    res.render("logEvent", { title: "Login", exist: "" })
+}
+
+
 exports.getConstruction = (req, res) => {
     console.log("und")
 
@@ -64,6 +71,58 @@ exports.getTicket = (req, res) => {
             res.render("login", { title: "Login", exist: "Password incorrect", name: nameT, location: locationT, sit: sitT, price: priceT, email: email })
         }
     }
+}
+
+// 
+exports.getPersonal = (req, res) => {
+
+    console.log("personal")
+
+    let email = req.body.logEmail;
+    let pwd = req.body.logPwd;
+
+    let name = req.body.name;
+    let location = req.body.location;
+    let sit = req.body.sit;
+    let price = req.body.price;
+    let number = req.body.nTicket;
+
+    const row = db.prepare(`SELECT * FROM User WHERE email = ?`).get(email);
+
+    if (pwd != undefined) {
+        const rowEv = db.prepare(`SELECT * FROM Event WHERE email = ?`).all(email);
+        if (row == undefined) {
+            console.log("no user found")
+            res.render("logEvent", { title: "Login", exist: "User not found, make Sing in" })
+        } else if (row.email == email) {
+            let pwddb = row.password;
+            let decrypted = decrypt(pwddb);
+            console.log("user found");
+            if (decrypted == pwd) {
+                console.log("password correct");
+                res.render("personal", { title: "personal", rowEv })
+            } else {
+                console.log("password incorrect")
+                res.render("logEvent", { title: "Login", exist: "Password incorrect" })
+            }
+        }
+    }
+
+    if (price != undefined) {
+        price = price.replace(",", ".");
+        price = parseFloat(price);
+
+        let cost = price * parseInt(number);
+
+        let id = Date.now().toString();
+        const stmt = db.prepare(`INSERT INTO Event(id, name, location, sit, email, price, nTicket) VALUES(?, ?, ?, ?, ?, ?, ?)`);
+        const info = stmt.run(id, name, location, sit, email, cost, number);
+        const rowEv = db.prepare(`SELECT * FROM Event WHERE email = ?`).all(email);
+        console.log(info.lastInsertRowid);
+        res.render("index", { title: "index" })
+        // res.render("personal", { title: "Prsonal area", rowEv })
+    }
+
 }
 
 exports.getWelcome = (req, res) => {
@@ -211,54 +270,6 @@ exports.getEvent = (req, res) => {
     res.render("event", { title: name, name: name, location: location, status: status, sit: sit, price: price });
 }
 
-// 
-exports.getPersonal = (req, res) => {
-    res.render("personal", { title: "Prsonal area" })
-
-    //     let email = req.body.email;
-
-    //     const row = db.prepare(`SELECT * FROM Event WHERE email = ?`).get(email);
-    //     console.log(row)
 
 
-
-    //     if (row == undefined) {
-    //         console.log("no user found")
-    //         res.render("personal", { title: "personal" })
-    //     } else if (row.email == email) {
-    //         let pwddb = row.password;
-    //         let decrypted = decrypt(pwddb);
-    //         console.log("user found");
-    //         if (decrypted == pwd) {
-    //             console.log("password correct");
-    //             res.render("personal", { title: "personal" })
-    //         } else {
-    //             console.log("password incorrect")
-    //             res.render("personal", { title: "personal" })
-    //         }
-    //     }
-
-}
-
-exports.getAddEvent = (req, res) => {
-    console.log("add")
-
-    let email = req.body.email;
-    let name = req.body.name;
-    let location = req.body.location;
-    let sit = req.body.sit;
-    let price = req.body.price;
-    let number = req.body.nTicket;
-
-    price = price.replace(",", ".");
-    price = parseFloat(price);
-
-    let cost = price * parseInt(number);
-
-    let id = Date.now().toString();
-    const stmt = db.prepare(`INSERT INTO Event(id, name, location, sit, email, price, nTicket) VALUES(?, ?, ?, ?, ?, ?, ?)`);
-    const info = stmt.run(id, name, location, sit, email, cost, number);
-    console.log(info.lastInsertRowid);
-    // res.render("personal", { title: "Prsonal area" })
-}
 

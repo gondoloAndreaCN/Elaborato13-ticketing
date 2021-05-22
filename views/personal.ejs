@@ -4,34 +4,41 @@
 
 
     <body>
+
+        <div class="loader">
+            <img class="img-loader" src="https://i.giphy.com/media/l3nWhI38IWDofyDrW/giphy.webp" alt="Loading...">
+        </div>
+
         <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">name</th>
+                    <th scope="col">location</th>
+                    <th scope="col">tickets</th>
+                    <th scope="col">price</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                <% rowEv.forEach(function(rowEv, index){ %>
+                    <tr>
+                        <th scope="row">
+                            <%= rowEv['id'] %>
+                        </th>
+                        <td>
+                            <%= rowEv['name'] %>
+                        </td>
+                        <td>
+                            <%= rowEv['location'] %>
+                        </td>
+                        <td>
+                            <%= rowEv['nTicket'] %>
+                        </td>
+                        <td>
+                            <%= rowEv['price'] %>
+                        </td>
+                    </tr>
+                    <% }) %>
             </tbody>
         </table>
     </body>

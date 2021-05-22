@@ -1,0 +1,59 @@
+<%- include('./partials/header') %>
+
+    <link rel="stylesheet" href="css/reg.css">
+
+    <body>
+
+        <div class="loader">
+            <img class="img-loader" src="https://i.giphy.com/media/l3nWhI38IWDofyDrW/giphy.webp" alt="Loading...">
+        </div>
+
+        <div class="form formLogin" data-aos="fade-left">
+            <div class="decoration">
+                <div data-x="90" class="el" id="el"><i class="fas fa-music"></i></div>
+                <div data-x="140" class="el" id="el"><i class="fas fa-glass-cheers"></i></div>
+                <div data-x="90" class="el" id="el"><i class="fas fa-ticket-alt"></i></i></div>
+            </div>
+            <form action="/personal" class="registration needs-validation" method="POST" name="logForm">
+                <h6 class="exist">
+                    <%= exist %>
+                </h6>
+                <h3>Login:</h3>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col">
+                            <p>Email:</p>
+                            <input type="email" class="form-control" placeholder="email" id="logEmail" name="logEmail"
+                                required>
+                        </div>
+                    </div>
+                    <hr class="sep">
+                    <div class="row">
+                        <div class="col">
+                            <p>Password</p>
+                            <input type="password" class="form-control" placeholder="password" id="logPwd" name="logPwd"
+                                required>
+                        </div>
+                    </div>
+                    <hr class="sep">
+                    <div class="row">
+                        <button id="validate" class="btn btn-primary">Submit</button>
+                    </div>
+                    <div class="row">
+                        <div class="form-text">
+                            Are you not already registered? <a class="log-in" href="/registration">Sing
+                                in</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script src="js\animation\anime.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
+
+    <%- include('./partials/footer') %>

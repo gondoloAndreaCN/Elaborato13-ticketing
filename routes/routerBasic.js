@@ -14,5 +14,5 @@ router.route("/under-construction").get(controllerBasic.getConstruction);
 router.route("/personal").post(controllerBasic.getPersonal);
 // 
 router.route("/logEvent").get(controllerBasic.getPersonalLog);
-
+router.route("/scan").get(controllerBasic.getQr);
 module.exports = router;

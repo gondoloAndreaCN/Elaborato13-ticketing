@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const qr = require("qrcode");
 const db = require('better-sqlite3')('Events.db');
 const { encrypt, decrypt } = require('../public/js/db/crypto');
 
@@ -74,7 +75,7 @@ exports.getTicket = (req, res) => {
 }
 
 // 
-exports.getPersonal = (req, res) => {
+exports.getPersonal = async function (req, res) {
 
     console.log("personal")
 
@@ -112,17 +113,30 @@ exports.getPersonal = (req, res) => {
         price = price.replace(",", ".");
         price = parseFloat(price);
 
+        let url = Date.now() + (Math.floor(Math.random() * 10000) + 1000);
+        url = url.toString();
+
         let cost = price * parseInt(number);
 
         let id = Date.now().toString();
-        const stmt = db.prepare(`INSERT INTO Event(id, name, location, sit, email, price, nTicket) VALUES(?, ?, ?, ?, ?, ?, ?)`);
-        const info = stmt.run(id, name, location, sit, email, cost, number);
+        const stmt = db.prepare(`INSERT INTO Event(id, name, location, sit, email, price, nTicket, urlQr) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`);
+        const info = stmt.run(id, name, location, sit, email, cost, number, url);
         const rowEv = db.prepare(`SELECT * FROM Event WHERE email = ?`).all(email);
         console.log(info.lastInsertRowid);
-        res.render("index", { title: "index" })
+
+        let qrImage = await qr.toDataURL(url);
+
+        window.location.href("scan")
+
+        res.render("scan", { title: "qr", qrImage });
+
         // res.render("personal", { title: "Prsonal area", rowEv })
     }
 
+}
+
+exports.getQr = (req, res) => {
+    res.render("scan", { title: "qr", qrImage });
 }
 
 exports.getWelcome = (req, res) => {

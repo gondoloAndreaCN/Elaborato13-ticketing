@@ -208,7 +208,7 @@ exports.getWelcome = (req, res) => {
                 subject: 'Avvenuta registrazione',
                 attachDataUrls: true,
                 html: '<h1> Grazie ' + `${fName} ${lName}` + '! ' + '</h1> <br> <h2> Ora fai parte della community </h2> <br>' +
-                    '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
+                    '<img style="width: 60vw; margin: 0 auto;" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {
                         filename: 'event1.jpg',
@@ -263,7 +263,7 @@ exports.getWelcome = (req, res) => {
                 subject: 'Avvenuta registrazione',
                 attachDataUrls: true,
                 html: '<h1> Thanks ' + `${fName}  ${lName}` + '! ' + '</h1> <br> <h2> Now you are part of the community </h2> <br>' +
-                    '<img style="width: 80vw" src="cid:unique@kreata.ee" alt="Photo">',
+                    '<img style="width: 60vw; margin: 0 auto;" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {
                         filename: 'event1.jpg',

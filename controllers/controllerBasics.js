@@ -190,14 +190,14 @@ exports.getWelcome = (req, res) => {
         let decrypted = decrypt(crypted);
         console.log(decrypted);
         let id = Date.now().toString();
-        const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(?, ?, ?, ?, ?, ?)`);
-        const info = stmt.run(id, fName, lName, email, date, crypted);
-        console.log(info.lastInsertRowid);
 
         if (pwd != pwd1) {
-            res.render("registration", { title: "Registrazione", exist: "" });
+            res.render("registration", { title: "Registrazione", exist: "Password non corretta" });
         } else if (pwd == pwd1) {
-            res.render("welcome", { title: "Benvenuto" });
+            // res.render("welcome", { title: "Benvenuto" });
+            const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(?, ?, ?, ?, ?, ?)`);
+            const info = stmt.run(id, fName, lName, email, date, crypted);    
+            console.log(info.lastInsertRowid);
             let transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
@@ -231,6 +231,9 @@ exports.getWelcome = (req, res) => {
 
             console.log(req.body);
 
+            res.redirect("events")
+
+
         }
     } else if (row.email == email) {
         console.log("email already exist");
@@ -245,14 +248,15 @@ exports.getWelcome = (req, res) => {
         let decrypted = decrypt(crypted);
         console.log(decrypted);
         let id = Date.now().toString();
-        const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(?, ?, ?, ?, ?, ?)`);
-        const info = stmt.run(id, fName, lName, email, date, crypted);
-        console.log(info.lastInsertRowid);
 
         if (pwd != pwd1) {
-            res.render("registration", { title: "Registrazione", exist: "" });
+            res.render("registration", { title: "Registrazione", exist: "Password non corretta" });
         } else if (pwd == pwd1) {
-            res.render("welcome", { title: "Welcome" });
+            // res.render("welcome", { title: "Welcome" });
+            const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(?, ?, ?, ?, ?, ?)`);
+            const info = stmt.run(id, fName, lName, email, date, crypted);
+            console.log(info.lastInsertRowid);
+    
             let transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
@@ -284,6 +288,8 @@ exports.getWelcome = (req, res) => {
                 }
             });
             console.log(req.body);
+            res.redirect("events")
+
         }
     }
 }

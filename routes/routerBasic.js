@@ -15,4 +15,5 @@ router.route("/personal").post(controllerBasic.getPersonal);
 // 
 router.route("/logEvent").get(controllerBasic.getPersonalLog);
 router.route("/qrCode").post(controllerBasic.getQr);
+router.route("/qrInfo").get(controllerBasic.getQrInfo);
 module.exports = router;

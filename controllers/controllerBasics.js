@@ -137,8 +137,6 @@ exports.getQr = async function (req, res) {
 
         let qrImage = await qr.toDataURL(url);
 
-        res.render("qrInfo", { title: "Info" });
-
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -163,7 +161,13 @@ exports.getQr = async function (req, res) {
             }
         });
 
+        res.redirect("qrInfo");
+
     }
+}
+
+exports.getQrInfo = (req, res) => {
+    res.render("qrInfo", { title: "Info" });
 }
 
 exports.getWelcome = (req, res) => {

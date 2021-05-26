@@ -12,6 +12,7 @@
 
         <div class="container container-card">
 
+            <h3>Per poter acquistare un evento bisona essere registrati</h3>
 
             <div class="row">
                 <% events.forEach(function(event, index){ %>
@@ -38,15 +39,16 @@
                                             style="display: none;">
                                         <input type="text" value="<%= event['price'] %>" name="price"
                                             style="display: none;">
-                                        <button class="btn btn-primary">Vai all'evento</a>
+                                        <button class="btn btn-primary">Vai all'evento</button>
                                     </form>
+                                    <div class="card-footer text-muted">
+                                        <p class="card-subtitle mb-2">
+                                            stato: <%= event['status'] %>
+                                        </p>
+                                    </div>
 
                                 </ul>
-                                <div class="card-footer text-muted">
-                                    <p class="card-subtitle mb-2">
-                                        stato: <%= event['status'] %>
-                                    </p>
-                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ const db = require('better-sqlite3')('Events.db');
 const { encrypt, decrypt } = require('../public/js/db/crypto');
 
 
-let { PythonShell } = require('python-shell')
+// let { PythonShell } = require('python-shell')
 
 exports.getHome = (req, res) => {
     console.log("home")
@@ -90,7 +90,7 @@ exports.getPersonal = (req, res) => {
     const row = db.prepare(`SELECT * FROM User WHERE email = ?`).get(email);
 
     if (pwd != undefined) {
-        const rowEv = db.prepare(`SELECT * FROM Event WHERE email = ?`).all(email);
+        const rowEv = db.prepare(`SELECT * FROM Tickets vent WHERE email = ?`).all(email);
         if (row == undefined) {
             console.log("no user found")
             res.render("logEvent", { title: "Login", exist: "Utente non trovato, registrati" })
@@ -130,9 +130,9 @@ exports.getQr = async function (req, res) {
         let cost = price * parseInt(number);
 
         let id = Date.now().toString();
-        const stmt = db.prepare(`INSERT INTO Event(id, name, location, sit, email, price, nTicket, urlQr) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`);
+        const stmt = db.prepare(`INSERT INTO Tickets (id, name, location, sit, email, price, nTicket, urlQr) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`);
         const info = stmt.run(id, name, location, sit, email, cost, number, url);
-        const rowEv = db.prepare(`SELECT * FROM Event WHERE email = ?`).all(email);
+        const rowEv = db.prepare(`SELECT * FROM Tickets WHERE email = ?`).all(email);
         console.log(info.lastInsertRowid);
 
         let qrImage = await qr.toDataURL(url);
@@ -196,7 +196,7 @@ exports.getWelcome = (req, res) => {
         } else if (pwd == pwd1) {
             // res.render("welcome", { title: "Benvenuto" });
             const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(?, ?, ?, ?, ?, ?)`);
-            const info = stmt.run(id, fName, lName, email, date, crypted);    
+            const info = stmt.run(id, fName, lName, email, date, crypted);
             console.log(info.lastInsertRowid);
             let transporter = nodemailer.createTransport({
                 service: 'gmail',
@@ -256,7 +256,7 @@ exports.getWelcome = (req, res) => {
             const stmt = db.prepare(`INSERT INTO User(id, fName, lName, email, date, password) VALUES(?, ?, ?, ?, ?, ?)`);
             const info = stmt.run(id, fName, lName, email, date, crypted);
             console.log(info.lastInsertRowid);
-    
+
             let transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
@@ -298,16 +298,23 @@ exports.getWelcome = (req, res) => {
 exports.getEvents = (req, res) => {
     console.log("events")
 
-    let finish = 0;
-    PythonShell.run('./scraping-event.py', null, function (err) {
-        if (err) throw err;
-        console.log('scraping ended');
-        finish = 1;
-        if (finish == 1) {
-            const events = require("../events.json");
-            res.render("events", { title: "Eventi", events });
-        }
-    });
+    let events = db.prepare(`SELECT * FROM Events`).all();
+
+    console.log(events)
+
+    setTimeout(() => { res.render("events", { title: "Eventi", events }); }, 1200);
+
+    // res.render("events", { title: "Eventi", events });
+    // let finish = 0;
+    // PythonShell.run('./scraping-event.py', null, function (err) {
+    //     if (err) throw err;
+    //     console.log('scraping ended');
+    //     finish = 1;
+    //     if (finish == 1) {
+    //         const events = require("../events.json");
+    //         res.render("events", { title: "Eventi", events });
+    //     }
+    // });
 }
 
 exports.getEvent = (req, res) => {

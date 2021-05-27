@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 # 
 import json
 # 
+import sqlite3
 
 baseurl = 'https://www.ticketmaster.it'
 
@@ -37,9 +38,16 @@ end = '\n]'
 
 jsonFile.write(head)
 
-chars = {
-	"&nbsp;", " "
-}
+con = sqlite3.connect('Events.db')
+
+cur = con.cursor()
+
+events = []
+
+for row in cur.execute('SELECT * FROM Events'):
+	events.append(row)
+
+# print(events[1])
 
 counter = 0
 
@@ -68,7 +76,7 @@ for link in productlinks:
 			name = name.replace('\\xc3', 'u\'')
 			name = name.replace('\\xb9', '')
 			name = name.replace('\\x9c', 'U')
-			name = name.replace("'", "'")
+			name = name.replace("'", "")
 			name = name.replace('\\xe2', '')
 			name = name.replace('\\x9d', '')
 			name = name.replace('\\x80', '')
@@ -82,10 +90,14 @@ for link in productlinks:
 			price = price[:5]
 			
 			id = i
-			print(name)
-			print(price)
+
+			print(name, location, status, sit, price)
 
 			events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + ', \n\t "sit":' + '"' + sit + '"' + ', \n\t "price":' + '"' + price + '"' + '\n\t}'
+
+			cur.execute("INSERT INTO Events (id, name, location, status, sit, price) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET name = '" + name + "', location = '" + location + "', status = '" + status + "', sit = '" + sit + "', price = '" + price + "'", (id, name, location, status, sit, price))
+
+			con.commit()
 
 			jsonFile.write(events)
 
@@ -96,26 +108,38 @@ for link in productlinks:
 			name = name.replace('\\xc3', 'u\'')
 			name = name.replace('\\xb9', '')
 			name = name.replace('\\x9c', 'U')
-			name = name.replace("'", "'")
+			name = name.replace("'", " ")
 			name = name.replace('\\xe2', '')
 			name = name.replace('\\x9d', '')
 			name = name.replace('\\x80', '')
 			name = name.replace('\\', '')
+
+			sit = None
+			price = None
 			
 			id = i
 
+			print(name, location, status, sit, price)
+
 			events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + '\n\t}'
 			
+			cur.execute("INSERT INTO Events (id, name, location, status, sit, price) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET name = '" + name + "', location = '" + location + "', status = '" + status + "', sit = NULL, price = NULL", (id, name, location, status, sit, price))
+			
+			con.commit()
+
 			jsonFile.write(events)
 
 	if(i != counter-1 and link[:29] == 'https://shop.ticketmaster.it/'):
 		
 		i += 1
 		events = ',\n'
+
+		# cur.execute("INSERT INTO Events VALUES (?, ?, ?, ?, ?, ?)", (id, name, location, status, sit, price))
+
 		jsonFile.write(events)
 
     			
     	
     	
-
+con.close()
 jsonFile.write(end)

@@ -90,7 +90,7 @@ exports.getPersonal = (req, res) => {
     const row = db.prepare(`SELECT * FROM User WHERE email = ?`).get(email);
 
     if (pwd != undefined) {
-        const rowEv = db.prepare(`SELECT * FROM Tickets vent WHERE email = ?`).all(email);
+        const rowEv = db.prepare(`SELECT * FROM Tickets vent WHERE temail = ?`).all(email);
         if (row == undefined) {
             console.log("no user found")
             res.render("logEvent", { title: "Login", exist: "Utente non trovato, registrati" })

@@ -130,9 +130,9 @@ exports.getQr = async function (req, res) {
         let cost = price * parseInt(number);
 
         let id = Date.now().toString();
-        const stmt = db.prepare(`INSERT INTO Tickets (id, name, location, sit, email, price, nTicket, urlQr) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`);
+        const stmt = db.prepare(`INSERT INTO Tickets (id, tname, tlocation, tsit, temail, tprice, nTicket, urlQr) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`);
         const info = stmt.run(id, name, location, sit, email, cost, number, url);
-        const rowEv = db.prepare(`SELECT * FROM Tickets WHERE email = ?`).all(email);
+        const rowEv = db.prepare(`SELECT * FROM Tickets WHERE temail = ?`).all(email);
         console.log(info.lastInsertRowid);
 
         let qrImage = await qr.toDataURL(url);

@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import json
 # 
 import sqlite3
+#
+import time
 
 baseurl = 'https://www.ticketmaster.it'
 
@@ -41,13 +43,6 @@ jsonFile.write(head)
 con = sqlite3.connect('Events.db')
 
 cur = con.cursor()
-
-events = []
-
-for row in cur.execute('SELECT * FROM Events'):
-	events.append(row)
-
-# print(events[1])
 
 counter = 0
 
@@ -89,15 +84,27 @@ for link in productlinks:
 			price = price.replace('\\xac', ' ')
 			price = price[:5]
 			
-			id = i
-
-			print(name, location, status, sit, price)
 
 			events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + ', \n\t "sit":' + '"' + sit + '"' + ', \n\t "price":' + '"' + price + '"' + '\n\t}'
 
-			cur.execute("INSERT INTO Events (id, name, location, status, sit, price) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET name = '" + name + "', location = '" + location + "', status = '" + status + "', sit = '" + sit + "', price = '" + price + "'", (id, name, location, status, sit, price))
 
-			con.commit()
+			exist = False
+
+			for row in cur.execute('SELECT * FROM Events'):
+    				if(row[1] == name and row[2] == location):
+    						exist = True
+
+			currenttime = time.time()
+			# currenttime = int(currenttime)
+			currenttime = str(currenttime)[:17].replace(".", "")
+			currenttime = int(currenttime)
+			id = currenttime
+
+			if(exist == False):
+					print(id)
+					insert = cur.execute("INSERT INTO Events (id, name, location, status, sit, price) VALUES (?, ?, ?, ?, ?, ?)", (id, name, location, status, sit, price))
+					con.commit()
+
 
 			jsonFile.write(events)
 
@@ -117,15 +124,25 @@ for link in productlinks:
 			sit = None
 			price = None
 			
-			id = i
-
-			print(name, location, status, sit, price)
+			# id = i
 
 			events = '\t{\n\t"id":' + '"' + str(i) + '"' + ',\n\t "name":' + '"' + name + '"' + ', \n\t "location":' + '"' + location + '"' + ', \n\t "status":' + '"' + status + '"' + '\n\t}'
 			
-			cur.execute("INSERT INTO Events (id, name, location, status, sit, price) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET name = '" + name + "', location = '" + location + "', status = '" + status + "', sit = NULL, price = NULL", (id, name, location, status, sit, price))
-			
-			con.commit()
+			exist = False
+
+			for row in cur.execute('SELECT * FROM Events'):
+    				if(row[1] == name and row[2] == location):
+    						exist = True
+
+			currenttime = time.time()
+			currenttime = str(currenttime)[:17].replace(".", "")
+			currenttime = int(currenttime)
+			id = currenttime
+
+			if(exist == False):
+					print(id)
+					insert = cur.execute("INSERT INTO Events (id, name, location, status, sit, price) VALUES (?, ?, ?, ?, ?, ?)", (id, name, location, status, sit, price))
+					con.commit()
 
 			jsonFile.write(events)
 

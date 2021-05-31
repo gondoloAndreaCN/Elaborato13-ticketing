@@ -213,13 +213,14 @@ div.welcome{
     /* top: 25vh; */
     left: 0;
     z-index: 4;
-    background-color: white;
+    background-color: #eef2f5;
     display: none;
 }
 
 .img-loader{
-    max-width: 480px;
-    width: 50%;
+    max-width: 650px;
+    min-width: 400px;
+    width: 60%;
 }
 
 .loader.hidden{

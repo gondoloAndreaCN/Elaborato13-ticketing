@@ -227,8 +227,8 @@ exports.getWelcome = (req, res) => {
         console.log("new user");
         let crypted = encrypt(pwd);
         console.log(crypted);
-        let decrypted = decrypt(crypted);
-        console.log(decrypted);
+        // let decrypted = decrypt(crypted);
+        // console.log(decrypted);
         let id = Date.now().toString();
 
         if (pwd != pwd1) {
@@ -327,11 +327,11 @@ exports.getWelcome = (req, res) => {
                 subject: "Avvenuta registrazione",
                 attachDataUrls: true,
                 html:
-                    "<h1> Thanks " +
-                    `${fName}  ${lName}` +
+                    "<h1> Grazie " +
+                    `${fName} ${lName}` +
                     "! " +
-                    "</h1> <br> <h2> Now you are part of the community </h2> <br>" +
-                    '<img style="width: 60vw; margin: 0 auto;" src="cid:unique@kreata.ee" alt="Photo">',
+                    "</h1> <br> <h2> Ora fai parte della community </h2> <br>" +
+                    '<img style="width: 50vw; margin: 0 auto;" src="cid:unique@kreata.ee" alt="Photo">',
                 attachments: [
                     {
                         filename: "event1.jpg",
@@ -359,11 +359,11 @@ exports.getEvents = (req, res) => {
 
     let events = db.prepare(`SELECT * FROM Events ORDER BY id`).all();
 
-    console.log(events);
+    // console.log(events);
 
     setTimeout(() => {
         res.render("events", { title: "Eventi", events });
-    }, 1200);
+    }, 1500);
 
     // res.render("events", { title: "Eventi", events });
     // let finish = 0;
